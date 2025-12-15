@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace baitaplon
 {
-    public partial class Form1 : Form
+    public partial class Quản_lí_thể_loại : Form
     {
-        public Form1()
+        public Quản_lí_thể_loại()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
