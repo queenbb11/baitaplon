@@ -44,5 +44,10 @@ namespace baitaplon
                 Application.Exit();
             }
         }
+
+        private void btnqlnv_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

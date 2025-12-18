@@ -7,7 +7,7 @@ namespace baitaplon
     public partial class Dangki : Form
     {
         // 1. Cập nhật chuỗi kết nối tới database 'bai_tap_lon'
-        string conStr = @"Data Source=LAPTOP-CO8GN5HP\SQLEXPRESS;Initial Catalog=bai_tap_lon;Integrated Security=True;TrustServerCertificate=True";
+        string conStr = @"Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True;TrustServerCertificate=True";
 
         public Dangki()
         {

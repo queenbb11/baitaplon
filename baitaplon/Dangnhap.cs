@@ -7,7 +7,7 @@ namespace baitaplon
     public partial class Dangnhap : Form
     {
         // Cập nhật chuỗi kết nối
-        string conStr = @"Data Source=LAPTOP-CO8GN5HP\SQLEXPRESS;Initial Catalog=bai_tap_lon;Integrated Security=True;TrustServerCertificate=True";
+        string conStr = @"Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True;TrustServerCertificate=True";
 
         public Dangnhap()
         {

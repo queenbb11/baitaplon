@@ -26,5 +26,10 @@ namespace baitaplon
         {
 
         }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
