@@ -72,6 +72,6 @@ namespace baitaplon
             this.DialogResult = DialogResult.Retry;
             this.Close();
         }
-        
+
     }
 }

@@ -43,7 +43,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnqltacgia = new System.Windows.Forms.Button();
             this.btnqlnv = new System.Windows.Forms.Button();
             this.btnQlc = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -76,7 +76,7 @@
             this.panelSidebar.Controls.Add(this.button5);
             this.panelSidebar.Controls.Add(this.button4);
             this.panelSidebar.Controls.Add(this.button3);
-            this.panelSidebar.Controls.Add(this.button2);
+            this.panelSidebar.Controls.Add(this.btnqltacgia);
             this.panelSidebar.Controls.Add(this.btnqlnv);
             this.panelSidebar.Controls.Add(this.btnQlc);
             this.panelSidebar.Controls.Add(this.pictureBox1);
@@ -282,19 +282,20 @@
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnqltacgia
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 225);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(281, 50);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Quản lí tác giả";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnqltacgia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnqltacgia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnqltacgia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnqltacgia.Location = new System.Drawing.Point(0, 225);
+            this.btnqltacgia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnqltacgia.Name = "btnqltacgia";
+            this.btnqltacgia.Size = new System.Drawing.Size(281, 50);
+            this.btnqltacgia.TabIndex = 3;
+            this.btnqltacgia.Text = "Quản lí tác giả";
+            this.btnqltacgia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnqltacgia.UseVisualStyleBackColor = true;
+            this.btnqltacgia.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnqlnv
             // 
@@ -427,7 +428,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnqltacgia;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
