@@ -307,6 +307,7 @@
             this.txtemaildg.Name = "txtemaildg";
             this.txtemaildg.Size = new System.Drawing.Size(184, 26);
             this.txtemaildg.TabIndex = 18;
+            this.txtemaildg.Validating += new System.ComponentModel.CancelEventHandler(this.txtemaildg_Validating);
             // 
             // Quanly_Docgia
             // 

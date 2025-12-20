@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -59,6 +60,24 @@ namespace baitaplon
             return kq > 0;
         }
 
+
+        // CHECK EMAIL GMAIL HỢP LỆ
+        private bool isValidGmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+            try
+            {
+                // Validate overall email format, then ensure domain is gmail.com
+                var addr = new System.Net.Mail.MailAddress(email.Trim());
+                return addr.Host.Equals("gmail.com", StringComparison.OrdinalIgnoreCase);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private void Quanly_Docgia_Load(object sender, EventArgs e)
         {
             cbgtdg.Items.Clear();
@@ -71,6 +90,7 @@ namespace baitaplon
 
         private void btnluutg_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("ĐÃ VÀO NÚT LƯU");
             string madg = txtmadg.Text.Trim();
             string tendg = txttendg.Text.Trim();
             DateTime ngs = ngsdg.Value;
@@ -84,6 +104,13 @@ namespace baitaplon
                 MessageBox.Show("Vui lòng nhập đầy đủ Mã và Tên độc giả");
                 return;
             }
+
+            if (!isValidGmail(email))
+            {
+                MessageBox.Show("Email phải đúng định dạng @gmail.com");
+                return;
+            }
+
 
             if (checktrungMadg(madg))
             {
@@ -115,6 +142,13 @@ namespace baitaplon
             string dt = txtdthoaidg.Text.Trim();
             string email = txtemaildg.Text.Trim();
             string dc = txtdchidg.Text.Trim();
+
+            //if (!isValidGmail(email))
+            //{
+            //    MessageBox.Show("Email phải đúng định dạng @gmail.com");
+            //    txtemaildg.Focus();
+            //    return;
+            //}
 
             if (con.State == ConnectionState.Closed)
                 con.Open();
@@ -348,6 +382,15 @@ namespace baitaplon
             // ===== Định dạng ngày sinh =====
             ex_cel.Range cl_ngs = oSheet.get_Range("C" + rowStart, "C" + rowEnd);
             cl_ngs.Columns.NumberFormat = "dd/mm/yyyy";
+        }
+
+        private void txtemaildg_Validating(object sender, CancelEventArgs e)
+        {
+            //if (!isValidGmail(txtemaildg.Text))
+            //{
+            //    MessageBox.Show("Email phải đúng định dạng @gmail.com");
+            //    e.Cancel = true; // ❌ KHÔNG CHO RỜI Ô
+            //}
         }
     }
 }
