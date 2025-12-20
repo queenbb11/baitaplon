@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.16.0.18925.20022\lib\net40\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,14 +68,31 @@
     <Compile Include="data_dki_dn.Designer.cs">
       <DependentUpon>data_dki_dn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="DieuHuong.cs" />
+    <Compile Include="Nha_xuat_ban.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Nha_xuat_ban.Designer.cs">
+      <DependentUpon>Nha_xuat_ban.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanlyTacgia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanlyTacgia.Designer.cs">
+      <DependentUpon>QuanlyTacgia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Quanly_Docgia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quanly_Docgia.Designer.cs">
+      <DependentUpon>Quanly_Docgia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Quanly_Nhanvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quanly_Nhanvien.Designer.cs" />
     <Compile Include="Trangchu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +108,9 @@
     <EmbeddedResource Include="data_dki_dn.resx">
       <DependentUpon>data_dki_dn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Nha_xuat_ban.resx">
+      <DependentUpon>Nha_xuat_ban.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -96,9 +120,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QuanlyTacgia.resx">
+      <DependentUpon>QuanlyTacgia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quanly_Docgia.resx">
+      <DependentUpon>Quanly_Docgia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quanly_Nhanvien.resx">
+      <DependentUpon>Quanly_Nhanvien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Trangchu.resx">
       <DependentUpon>Trangchu.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

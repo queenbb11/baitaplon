@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quanlythuvien;
+using System;
 using System.Windows.Forms;
 
 namespace baitaplon
@@ -19,7 +20,7 @@ namespace baitaplon
         private void panelSidebar_Paint(object sender, PaintEventArgs e) { }
         private void btnqlnv_Click(object sender, EventArgs e) { }
         private void pictureBox1_Click(object sender, EventArgs e) { }
-        private void Form1_Load(object sender, EventArgs e){}
+        private void Form1_Load(object sender, EventArgs e) { }
 
         private void btnLogout_Click_Click(object sender, EventArgs e)
         {
@@ -32,7 +33,7 @@ namespace baitaplon
                 this.Close();
             }
         }
-        
+
 
         private void btnExit_Click_1(object sender, EventArgs e)
         {
@@ -43,6 +44,66 @@ namespace baitaplon
                 // Thay vì dùng DialogResult.Cancel, hãy dùng lệnh này để ép chương trình tắt ngay lập tức
                 Application.Exit();
             }
+        }
+
+        private void btnqlnv_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            // 2. Khởi tạo và mở Form Quản lý nhân viên
+            using (Quanly_Nhanvien frmNV = new Quanly_Nhanvien())
+            {
+                // ShowDialog có nghĩa là phải tắt form nhân viên thì mới quay lại được trang chủ
+                frmNV.ShowDialog();
+            }
+
+            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            this.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            // 2. Khởi tạo và mở Form Quản lý nhân viên
+            using (QuanlyTacgia frmNV = new QuanlyTacgia())
+            {
+                // ShowDialog có nghĩa là phải tắt form nhân viên thì mới quay lại được trang chủ
+                frmNV.ShowDialog();
+            }
+
+            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            this.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            // 2. Khởi tạo và mở Form Quản lý nhân viên
+            using (Nha_xuat_ban frmNV = new Nha_xuat_ban())
+            {
+                // ShowDialog có nghĩa là phải tắt form nhân viên thì mới quay lại được trang chủ
+                frmNV.ShowDialog();
+            }
+
+            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            this.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            // 2. Khởi tạo và mở Form Quản lý nhân viên
+            using (Quanly_Docgia frmNV = new Quanly_Docgia())
+            {
+                // ShowDialog có nghĩa là phải tắt form nhân viên thì mới quay lại được trang chủ
+                frmNV.ShowDialog();
+            }
+
+            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            this.Show();
         }
     }
 }
