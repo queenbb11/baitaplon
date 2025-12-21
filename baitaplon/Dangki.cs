@@ -86,5 +86,10 @@ namespace baitaplon
                 this.Close();
             }
         }
+
+        private void Dangki_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

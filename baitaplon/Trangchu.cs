@@ -95,8 +95,23 @@ namespace baitaplon
         {
             this.Hide();
 
-            // 2. Khởi tạo và mở Form Quản lý nhân viên
+            // 2. Khởi tạo và mở Form Quản lý doc gia
             using (Quanly_Docgia frmNV = new Quanly_Docgia())
+            {
+                // ShowDialog có nghĩa là phải tắt form nhân viên thì mới quay lại được trang chủ
+                frmNV.ShowDialog();
+            }
+
+            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            this.Show();
+        }
+
+        private void btnTheloai_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            // 2. Khởi tạo và mở Form Quản lý thể loại
+            using (Ql_theloai frmNV = new Ql_theloai())
             {
                 // ShowDialog có nghĩa là phải tắt form nhân viên thì mới quay lại được trang chủ
                 frmNV.ShowDialog();

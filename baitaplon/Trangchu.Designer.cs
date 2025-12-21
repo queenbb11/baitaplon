@@ -38,7 +38,7 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnTheloai = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -71,7 +71,7 @@
             this.panelSidebar.Controls.Add(this.button10);
             this.panelSidebar.Controls.Add(this.button9);
             this.panelSidebar.Controls.Add(this.button8);
-            this.panelSidebar.Controls.Add(this.button7);
+            this.panelSidebar.Controls.Add(this.btnTheloai);
             this.panelSidebar.Controls.Add(this.button6);
             this.panelSidebar.Controls.Add(this.button5);
             this.panelSidebar.Controls.Add(this.button4);
@@ -212,19 +212,20 @@
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnTheloai
             // 
-            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(0, 475);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(281, 50);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "Quản lí thể loại ";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnTheloai.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTheloai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTheloai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTheloai.Location = new System.Drawing.Point(0, 475);
+            this.btnTheloai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTheloai.Name = "btnTheloai";
+            this.btnTheloai.Size = new System.Drawing.Size(281, 50);
+            this.btnTheloai.TabIndex = 8;
+            this.btnTheloai.Text = "Quản lí thể loại ";
+            this.btnTheloai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTheloai.UseVisualStyleBackColor = true;
+            this.btnTheloai.Click += new System.EventHandler(this.btnTheloai_Click);
             // 
             // button6
             // 
@@ -425,7 +426,7 @@
         private System.Windows.Forms.Button btnqlnv;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnTheloai;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
