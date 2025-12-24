@@ -64,20 +64,45 @@
     <Compile Include="data_dki_dn.Designer.cs">
       <DependentUpon>data_dki_dn.cs</DependentUpon>
     </Compile>
-    
-    <Compile Include="Form1.cs">
+    <Compile Include="DieuHuong.cs" />
+    <Compile Include="Nha_xuat_ban.cs">
       <SubType>Form</SubType>
     </Compile>
-
+    <Compile Include="Nha_xuat_ban.Designer.cs">
+      <DependentUpon>Nha_xuat_ban.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
-
+    <Compile Include="Ql_Sach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ql_Sach.Designer.cs">
+      <DependentUpon>Ql_Sach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ql_theloai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ql_theloai.Designer.cs">
+      <DependentUpon>Ql_theloai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanlyTacgia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanlyTacgia.Designer.cs">
+      <DependentUpon>QuanlyTacgia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Quanly_Docgia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quanly_Docgia.Designer.cs">
+      <DependentUpon>Quanly_Docgia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Thuvien.cs" />
     <Compile Include="Trangchu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Trangchu.Designer.cs">
       <DependentUpon>Trangchu.cs</DependentUpon>
     </Compile>
-
     <EmbeddedResource Include="Dangki.resx">
       <DependentUpon>Dangki.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="data_dki_dn.resx">
       <DependentUpon>data_dki_dn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nha_xuat_ban.resx">
+      <DependentUpon>Nha_xuat_ban.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,9 +124,22 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ql_Sach.resx">
+      <DependentUpon>Ql_Sach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ql_theloai.resx">
+      <DependentUpon>Ql_theloai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanlyTacgia.resx">
+      <DependentUpon>QuanlyTacgia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quanly_Docgia.resx">
+      <DependentUpon>Quanly_Docgia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Trangchu.resx">
       <DependentUpon>Trangchu.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -111,6 +152,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

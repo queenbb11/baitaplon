@@ -64,7 +64,6 @@ namespace baitaplon
             //kết nối db
             if (con.State == ConnectionState.Closed)
                 con.Open();
-
             // tạo đối tượng command để thực hiện truy vấn
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

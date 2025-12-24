@@ -40,26 +40,16 @@ namespace baitaplon
 
         }
 
-        private void Ql_theloai_Load(object sender, EventArgs e)
-        {
-            //khi chyaj form sẽ chạy ra dữ liệu đã có
-            load_theloai();
-
-        }
+        
         // chon tren luoi, nos day xuong phan nhap
         private void dgvDanhsach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = e.RowIndex;
             txtMaTL.Text = dgvTheloai.Rows[i].Cells[0].Value.ToString();
             txtTenTL.Text = dgvTheloai.Rows[i].Cells[1].Value.ToString();
-            
             //thuoc tinh nao khong ddc sua, thì cho mờ đi
             txtMaTL.Enabled = false;
         }
-
-
-
-
 
 
         //ktr để khi thêm trùng mã tg thì thông báo lỗi
@@ -126,6 +116,7 @@ namespace baitaplon
             load_theloai();
         }
 
+        //XÓA
         private void btnXoa_Click(object sender, EventArgs e)
         {
           
@@ -134,28 +125,27 @@ namespace baitaplon
             DialogResult xoa = MessageBox.Show("Bạn có muốn xóa không?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (xoa == DialogResult.No)
                 return;
-           
             string sql = "Delete from Theloai Where MaTL = '" + mtl + "' ";
             Thuvien.ins_upd_del(sql);
             MessageBox.Show("Xóa thành công");
             load_theloai();
         }
+        //TÌM KIẾM
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
-            string mtl = txtMaTL.Text.Trim();
-            string tentl = txtTenTL.Text.Trim();
-
+            string mtl = txtMaTL_tk.Text.Trim();
+            string tentl = txtTenTL_tk.Text.Trim();
             string sql = "SELECT * FROM Theloai " +
                          "WHERE MaTL LIKE N'%" + mtl + "%' " +
-                         "or TenTL LIKE N'%" + tentl + "%'";
-            //or là tìm 1 trong 2. and tìm theo 2 đk
+                         "and TenTL LIKE N'%" + tentl + "%'";
+          
             DataTable tb = Thuvien.Getdatatable(sql);
             // đổ dl vào lưới
             dgvTheloai.DataSource = tb;
             dgvTheloai.Refresh();
            
         }
-
+        //FORM XUẤT FILE
         public void ExportExcel(DataTable tb, string sheetname)
         {
             ex_cel.Application oExcel = new ex_cel.Application();
@@ -242,7 +232,25 @@ namespace baitaplon
 
         private void dgvTheloai_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
+            if (dgvTheloai.Rows[e.RowIndex].IsNewRow)
+                return;
             dgvTheloai.Rows[e.RowIndex].Cells["STT"].Value = e.RowIndex + 1;
+
+        }
+
+        private void Ql_theloai_Load(object sender, EventArgs e)
+        {
+            load_theloai();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtMaTL.Clear();
+            txtTenTL.Clear();
+       
+            txtMaTL.Enabled = true;
+            txtMaTL.Focus();
+            load_theloai();
         }
     }
 }

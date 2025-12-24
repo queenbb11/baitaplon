@@ -41,7 +41,7 @@
             this.btnTheloai = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btQlsach = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnqltacgia = new System.Windows.Forms.Button();
             this.btnqlnv = new System.Windows.Forms.Button();
@@ -74,7 +74,7 @@
             this.panelSidebar.Controls.Add(this.btnTheloai);
             this.panelSidebar.Controls.Add(this.button6);
             this.panelSidebar.Controls.Add(this.button5);
-            this.panelSidebar.Controls.Add(this.button4);
+            this.panelSidebar.Controls.Add(this.btQlsach);
             this.panelSidebar.Controls.Add(this.button3);
             this.panelSidebar.Controls.Add(this.btnqltacgia);
             this.panelSidebar.Controls.Add(this.btnqlnv);
@@ -256,19 +256,20 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button4
+            // btQlsach
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 325);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(281, 50);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Quản lí sách";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.UseVisualStyleBackColor = true;
+            this.btQlsach.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btQlsach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btQlsach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btQlsach.Location = new System.Drawing.Point(0, 325);
+            this.btQlsach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btQlsach.Name = "btQlsach";
+            this.btQlsach.Size = new System.Drawing.Size(281, 50);
+            this.btQlsach.TabIndex = 5;
+            this.btQlsach.Text = "Quản lí sách";
+            this.btQlsach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btQlsach.UseVisualStyleBackColor = true;
+            this.btQlsach.Click += new System.EventHandler(this.btQlsach_Click);
             // 
             // button3
             // 
@@ -429,7 +430,7 @@
         private System.Windows.Forms.Button btnTheloai;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btQlsach;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnqltacgia;
         private System.Windows.Forms.PictureBox pictureBox2;
