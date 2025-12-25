@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
-          Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -15,7 +13,6 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -25,7 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
@@ -34,7 +30,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,7 +43,6 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Include="Dangki.cs">
       <SubType>Form</SubType>
@@ -56,69 +50,64 @@
     <Compile Include="Dangki.Designer.cs">
       <DependentUpon>Dangki.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Dangnhap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dangnhap.Designer.cs">
       <DependentUpon>Dangnhap.cs</DependentUpon>
     </Compile>
-
     <Compile Include="data_dki_dn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="data_dki_dn.Designer.cs">
       <DependentUpon>data_dki_dn.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DieuHuong.cs" />
-
     <Compile Include="Nha_xuat_ban.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Nha_xuat_ban.Designer.cs">
       <DependentUpon>Nha_xuat_ban.cs</DependentUpon>
     </Compile>
-
+    <Compile Include="Ql_khosach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ql_khosach.Designer.cs">
+      <DependentUpon>Ql_khosach.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ql_Sach.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ql_Sach.Designer.cs">
       <DependentUpon>Ql_Sach.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Ql_theloai.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ql_theloai.Designer.cs">
       <DependentUpon>Ql_theloai.cs</DependentUpon>
     </Compile>
-
     <Compile Include="QuanlyTacgia.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="QuanlyTacgia.Designer.cs">
       <DependentUpon>QuanlyTacgia.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Quanly_Docgia.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Quanly_Docgia.Designer.cs">
       <DependentUpon>Quanly_Docgia.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Trangchu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Trangchu.Designer.cs">
       <DependentUpon>Trangchu.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Thuvien.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="Dangki.resx">
       <DependentUpon>Dangki.cs</DependentUpon>
@@ -131,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Nha_xuat_ban.resx">
       <DependentUpon>Nha_xuat_ban.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ql_khosach.resx">
+      <DependentUpon>Ql_khosach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ql_Sach.resx">
       <DependentUpon>Ql_Sach.cs</DependentUpon>
@@ -147,19 +139,39 @@
     <EmbeddedResource Include="Trangchu.resx">
       <DependentUpon>Trangchu.cs</DependentUpon>
     </EmbeddedResource>
-
     <None Include="packages.config" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-
   <ItemGroup>
-    <COMReference Include="Microsoft.Office.Core" />
-    <COMReference Include="Microsoft.Office.Interop.Excel" />
-    <COMReference Include="VBIDE" />
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
-
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -247,7 +247,6 @@ namespace baitaplon
         {
             txtMaTL.Clear();
             txtTenTL.Clear();
-       
             txtMaTL.Enabled = true;
             txtMaTL.Focus();
             load_theloai();

@@ -71,7 +71,7 @@
             // dgvSach
             // 
             this.dgvSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSach.Location = new System.Drawing.Point(47, 538);
+            this.dgvSach.Location = new System.Drawing.Point(57, 536);
             this.dgvSach.Name = "dgvSach";
             this.dgvSach.RowHeadersWidth = 62;
             this.dgvSach.RowTemplate.Height = 28;

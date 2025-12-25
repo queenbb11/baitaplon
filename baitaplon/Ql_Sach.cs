@@ -141,7 +141,7 @@ namespace baitaplon
             string mnxb = cboMaNXB.SelectedValue.ToString();
             string tt = cboTinhtrang.SelectedItem.ToString();
 
-            // 7) insert (nam là int -> không để trong '')
+            // 
             string sql =
                 "INSERT INTO Sach VALUES (" +
                 "'" + ms + "', " +
@@ -184,7 +184,7 @@ namespace baitaplon
                 MessageBox.Show("Chọn tình trạng!");
                 return;
             }
-            // UPDATE đúng cột
+            
             string sql =
                 "UPDATE Sach SET " +
                 "TenS = N'" + ts + "', " +
@@ -213,15 +213,20 @@ namespace baitaplon
             load_Sach();
         }
 
-       
 
+        private void dgvTheloai_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            if (dgvSach.Rows[e.RowIndex].IsNewRow)
+                return;
+            dgvSach.Rows[e.RowIndex].Cells["STT"].Value = e.RowIndex + 1;
+
+        }
         private void dgvSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return; // click header thì bỏ qua
             int i = e.RowIndex;
             txtMaS.Text = dgvSach.Rows[i].Cells["MaS"].Value.ToString();
             txtTenS.Text = dgvSach.Rows[i].Cells["TenS"].Value.ToString();
-
             cboLoaisach.SelectedValue = dgvSach.Rows[i].Cells["MaTL"].Value.ToString();
             cboTacgia.SelectedValue = dgvSach.Rows[i].Cells["MaTG"].Value.ToString();
             cboMaNXB.SelectedValue = dgvSach.Rows[i].Cells["MaNXB"].Value.ToString();

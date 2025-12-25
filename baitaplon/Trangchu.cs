@@ -128,5 +128,20 @@ namespace baitaplon
             // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
             this.Show();
         }
+        //form ql kho sach
+        private void btnQl_khosach_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            // 2. Khởi tạo và mở Form Quản lý sách
+            using (Ql_khosach frmS = new Ql_khosach())
+            {
+                // ShowDialog có nghĩa là phải tắt form thì mới quay lại được trang chủ
+                frmS.ShowDialog();
+            }
+
+            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            this.Show();
+        }
     }
 }
