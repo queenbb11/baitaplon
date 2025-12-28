@@ -1,4 +1,5 @@
 ﻿
+using Quanlythuvien;
 using System;
 using System.Windows.Forms;
 
@@ -48,7 +49,17 @@ namespace baitaplon
 
         private void btnqlnv_Click_1(object sender, EventArgs e)
         {
-            
+            this.Hide();
+
+            // 2. Khởi tạo và mở Form Quản lý tác giả
+            using (Quanly_Nhanvien frmNV = new Quanly_Nhanvien())
+            {
+                // ShowDialog có nghĩa là phải tắt form nhân viên thì mới quay lại được trang chủ
+                frmNV.ShowDialog();
+            }
+
+            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            this.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
