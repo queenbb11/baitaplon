@@ -58,7 +58,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(408, 47);
+            this.label1.Location = new System.Drawing.Point(408, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(278, 25);
             this.label1.TabIndex = 0;
@@ -70,23 +70,23 @@
             this.groupBox1.Controls.Add(this.txtMaTL);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(70, 267);
+            this.groupBox1.Location = new System.Drawing.Point(70, 254);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(756, 179);
+            this.groupBox1.Size = new System.Drawing.Size(756, 170);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cập nhật thể loại sách";
             // 
             // txtTenTL
             // 
-            this.txtTenTL.Location = new System.Drawing.Point(244, 122);
+            this.txtTenTL.Location = new System.Drawing.Point(244, 116);
             this.txtTenTL.Name = "txtTenTL";
             this.txtTenTL.Size = new System.Drawing.Size(230, 26);
             this.txtTenTL.TabIndex = 3;
             // 
             // txtMaTL
             // 
-            this.txtMaTL.Location = new System.Drawing.Point(244, 54);
+            this.txtMaTL.Location = new System.Drawing.Point(244, 51);
             this.txtMaTL.Name = "txtMaTL";
             this.txtMaTL.Size = new System.Drawing.Size(230, 26);
             this.txtMaTL.TabIndex = 2;
@@ -94,18 +94,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(71, 122);
+            this.label3.Location = new System.Drawing.Point(71, 116);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 20);
+            this.label3.Size = new System.Drawing.Size(79, 19);
             this.label3.TabIndex = 1;
             this.label3.Text = "Tên thể loại";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 52);
+            this.label2.Location = new System.Drawing.Point(75, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 20);
+            this.label2.Size = new System.Drawing.Size(77, 19);
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã thể loại";
             // 
@@ -116,11 +116,11 @@
             this.STT,
             this.MaTL,
             this.TenTL});
-            this.dgvTheloai.Location = new System.Drawing.Point(39, 471);
+            this.dgvTheloai.Location = new System.Drawing.Point(39, 447);
             this.dgvTheloai.Name = "dgvTheloai";
             this.dgvTheloai.RowHeadersWidth = 62;
             this.dgvTheloai.RowTemplate.Height = 28;
-            this.dgvTheloai.Size = new System.Drawing.Size(956, 225);
+            this.dgvTheloai.Size = new System.Drawing.Size(956, 214);
             this.dgvTheloai.TabIndex = 4;
             this.dgvTheloai.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTheloai_RowPostPaint);
             // 
@@ -150,9 +150,9 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(898, 267);
+            this.btnLuu.Location = new System.Drawing.Point(898, 254);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(97, 32);
+            this.btnLuu.Size = new System.Drawing.Size(97, 30);
             this.btnLuu.TabIndex = 5;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -160,9 +160,9 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(898, 315);
+            this.btnSua.Location = new System.Drawing.Point(898, 299);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(97, 32);
+            this.btnSua.Size = new System.Drawing.Size(97, 30);
             this.btnSua.TabIndex = 6;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -170,9 +170,9 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(898, 414);
+            this.btnReset.Location = new System.Drawing.Point(898, 393);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(97, 32);
+            this.btnReset.Size = new System.Drawing.Size(97, 30);
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -180,9 +180,9 @@
             // 
             // btnTimkiem
             // 
-            this.btnTimkiem.Location = new System.Drawing.Point(898, 97);
+            this.btnTimkiem.Location = new System.Drawing.Point(898, 92);
             this.btnTimkiem.Name = "btnTimkiem";
-            this.btnTimkiem.Size = new System.Drawing.Size(97, 32);
+            this.btnTimkiem.Size = new System.Drawing.Size(97, 30);
             this.btnTimkiem.TabIndex = 8;
             this.btnTimkiem.Text = "Tìm kiếm";
             this.btnTimkiem.UseVisualStyleBackColor = true;
@@ -190,9 +190,9 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(898, 366);
+            this.btnXoa.Location = new System.Drawing.Point(898, 348);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(97, 32);
+            this.btnXoa.Size = new System.Drawing.Size(97, 30);
             this.btnXoa.TabIndex = 9;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -200,9 +200,9 @@
             // 
             // btnXuatfile
             // 
-            this.btnXuatfile.Location = new System.Drawing.Point(898, 164);
+            this.btnXuatfile.Location = new System.Drawing.Point(898, 156);
             this.btnXuatfile.Name = "btnXuatfile";
-            this.btnXuatfile.Size = new System.Drawing.Size(97, 32);
+            this.btnXuatfile.Size = new System.Drawing.Size(97, 30);
             this.btnXuatfile.TabIndex = 10;
             this.btnXuatfile.Text = "Xuất file";
             this.btnXuatfile.UseVisualStyleBackColor = true;
@@ -214,23 +214,23 @@
             this.groupBox2.Controls.Add(this.txtMaTL_tk);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(76, 97);
+            this.groupBox2.Location = new System.Drawing.Point(76, 92);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(750, 125);
+            this.groupBox2.Size = new System.Drawing.Size(750, 119);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin tìm kiếm";
             // 
             // txtTenTL_tk
             // 
-            this.txtTenTL_tk.Location = new System.Drawing.Point(238, 93);
+            this.txtTenTL_tk.Location = new System.Drawing.Point(238, 88);
             this.txtTenTL_tk.Name = "txtTenTL_tk";
             this.txtTenTL_tk.Size = new System.Drawing.Size(230, 26);
             this.txtTenTL_tk.TabIndex = 7;
             // 
             // txtMaTL_tk
             // 
-            this.txtMaTL_tk.Location = new System.Drawing.Point(238, 25);
+            this.txtMaTL_tk.Location = new System.Drawing.Point(238, 24);
             this.txtMaTL_tk.Name = "txtMaTL_tk";
             this.txtMaTL_tk.Size = new System.Drawing.Size(230, 26);
             this.txtMaTL_tk.TabIndex = 6;
@@ -238,26 +238,26 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(82, 96);
+            this.label4.Location = new System.Drawing.Point(82, 91);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 20);
+            this.label4.Size = new System.Drawing.Size(79, 19);
             this.label4.TabIndex = 5;
             this.label4.Text = "Tên thể loại";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(86, 26);
+            this.label5.Location = new System.Drawing.Point(86, 25);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 20);
+            this.label5.Size = new System.Drawing.Size(77, 19);
             this.label5.TabIndex = 4;
             this.label5.Text = "Mã thể loại";
             // 
             // Ql_theloai
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 744);
+            this.ClientSize = new System.Drawing.Size(1050, 707);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnXuatfile);
             this.Controls.Add(this.btnXoa);
@@ -268,6 +268,7 @@
             this.Controls.Add(this.dgvTheloai);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Ql_theloai";
             this.Text = "Qltheloai";
             this.Load += new System.EventHandler(this.Ql_theloai_Load);
