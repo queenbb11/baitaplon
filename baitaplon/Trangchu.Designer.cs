@@ -78,8 +78,9 @@
             this.panelSidebar.Controls.Add(this.pictureBox1);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
+            this.panelSidebar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(250, 836);
+            this.panelSidebar.Size = new System.Drawing.Size(281, 883);
             this.panelSidebar.TabIndex = 0;
             this.panelSidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSidebar_Paint);
             // 
@@ -87,9 +88,10 @@
             // 
             this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnThongKe.Location = new System.Drawing.Point(0, 660);
+            this.btnThongKe.Location = new System.Drawing.Point(0, 825);
+            this.btnThongKe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(250, 40);
+            this.btnThongKe.Size = new System.Drawing.Size(281, 50);
             this.btnThongKe.TabIndex = 16;
             this.btnThongKe.Text = "Thống kê";
             this.btnThongKe.UseVisualStyleBackColor = false;
@@ -100,9 +102,10 @@
             this.btnQLTraCuu.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnQLTraCuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQLTraCuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQLTraCuu.Location = new System.Drawing.Point(0, 620);
+            this.btnQLTraCuu.Location = new System.Drawing.Point(0, 775);
+            this.btnQLTraCuu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnQLTraCuu.Name = "btnQLTraCuu";
-            this.btnQLTraCuu.Size = new System.Drawing.Size(250, 40);
+            this.btnQLTraCuu.Size = new System.Drawing.Size(281, 50);
             this.btnQLTraCuu.TabIndex = 15;
             this.btnQLTraCuu.Text = "Quản lí tra cứu";
             this.btnQLTraCuu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -114,9 +117,10 @@
             this.btnQLTrangThaiSach.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnQLTrangThaiSach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQLTrangThaiSach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQLTrangThaiSach.Location = new System.Drawing.Point(0, 580);
+            this.btnQLTrangThaiSach.Location = new System.Drawing.Point(0, 725);
+            this.btnQLTrangThaiSach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnQLTrangThaiSach.Name = "btnQLTrangThaiSach";
-            this.btnQLTrangThaiSach.Size = new System.Drawing.Size(250, 40);
+            this.btnQLTrangThaiSach.Size = new System.Drawing.Size(281, 50);
             this.btnQLTrangThaiSach.TabIndex = 14;
             this.btnQLTrangThaiSach.Text = "Quản lí trạng thái sách";
             this.btnQLTrangThaiSach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -128,11 +132,12 @@
             this.button11.Dock = System.Windows.Forms.DockStyle.Top;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(0, 540);
+            this.button11.Location = new System.Drawing.Point(0, 675);
+            this.button11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(250, 40);
+            this.button11.Size = new System.Drawing.Size(281, 50);
             this.button11.TabIndex = 13;
-            this.button11.Text = "Quản lí nhân viên";
+            this.button11.Text = "Quản lí phiếu phạt";
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.UseVisualStyleBackColor = true;
             // 
@@ -141,9 +146,10 @@
             this.button10.Dock = System.Windows.Forms.DockStyle.Top;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(0, 500);
+            this.button10.Location = new System.Drawing.Point(0, 625);
+            this.button10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(250, 40);
+            this.button10.Size = new System.Drawing.Size(281, 50);
             this.button10.TabIndex = 12;
             this.button10.Text = "Quản lí phiếu mượn";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -154,9 +160,10 @@
             this.button9.Dock = System.Windows.Forms.DockStyle.Top;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(0, 460);
+            this.button9.Location = new System.Drawing.Point(0, 575);
+            this.button9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(250, 40);
+            this.button9.Size = new System.Drawing.Size(281, 50);
             this.button9.TabIndex = 10;
             this.button9.Text = "Quản lí phiêu trả";
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -167,9 +174,10 @@
             this.button8.Dock = System.Windows.Forms.DockStyle.Top;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(0, 420);
+            this.button8.Location = new System.Drawing.Point(0, 525);
+            this.button8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(250, 40);
+            this.button8.Size = new System.Drawing.Size(281, 50);
             this.button8.TabIndex = 9;
             this.button8.Text = "Quản lí trả sách";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -180,9 +188,10 @@
             this.btnTheloai.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTheloai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTheloai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTheloai.Location = new System.Drawing.Point(0, 380);
+            this.btnTheloai.Location = new System.Drawing.Point(0, 475);
+            this.btnTheloai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTheloai.Name = "btnTheloai";
-            this.btnTheloai.Size = new System.Drawing.Size(250, 40);
+            this.btnTheloai.Size = new System.Drawing.Size(281, 50);
             this.btnTheloai.TabIndex = 8;
             this.btnTheloai.Text = "Quản lí thể loại ";
             this.btnTheloai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -194,9 +203,10 @@
             this.btnQl_khosach.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnQl_khosach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQl_khosach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQl_khosach.Location = new System.Drawing.Point(0, 340);
+            this.btnQl_khosach.Location = new System.Drawing.Point(0, 425);
+            this.btnQl_khosach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnQl_khosach.Name = "btnQl_khosach";
-            this.btnQl_khosach.Size = new System.Drawing.Size(250, 40);
+            this.btnQl_khosach.Size = new System.Drawing.Size(281, 50);
             this.btnQl_khosach.TabIndex = 7;
             this.btnQl_khosach.Text = "Quản lí kho sách";
             this.btnQl_khosach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -208,9 +218,10 @@
             this.button5.Dock = System.Windows.Forms.DockStyle.Top;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 300);
+            this.button5.Location = new System.Drawing.Point(0, 375);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(250, 40);
+            this.button5.Size = new System.Drawing.Size(281, 50);
             this.button5.TabIndex = 6;
             this.button5.Text = "Quản lí độc giả";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -222,9 +233,10 @@
             this.btQlsach.Dock = System.Windows.Forms.DockStyle.Top;
             this.btQlsach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btQlsach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btQlsach.Location = new System.Drawing.Point(0, 260);
+            this.btQlsach.Location = new System.Drawing.Point(0, 325);
+            this.btQlsach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btQlsach.Name = "btQlsach";
-            this.btQlsach.Size = new System.Drawing.Size(250, 40);
+            this.btQlsach.Size = new System.Drawing.Size(281, 50);
             this.btQlsach.TabIndex = 5;
             this.btQlsach.Text = "Quản lí sách";
             this.btQlsach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -236,9 +248,10 @@
             this.button3.Dock = System.Windows.Forms.DockStyle.Top;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 220);
+            this.button3.Location = new System.Drawing.Point(0, 275);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(250, 40);
+            this.button3.Size = new System.Drawing.Size(281, 50);
             this.button3.TabIndex = 4;
             this.button3.Text = "Quản lí nhà xuất bản ";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -250,9 +263,10 @@
             this.btnqltacgia.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnqltacgia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnqltacgia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnqltacgia.Location = new System.Drawing.Point(0, 180);
+            this.btnqltacgia.Location = new System.Drawing.Point(0, 225);
+            this.btnqltacgia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnqltacgia.Name = "btnqltacgia";
-            this.btnqltacgia.Size = new System.Drawing.Size(250, 40);
+            this.btnqltacgia.Size = new System.Drawing.Size(281, 50);
             this.btnqltacgia.TabIndex = 3;
             this.btnqltacgia.Text = "Quản lí tác giả";
             this.btnqltacgia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -264,9 +278,10 @@
             this.btnqlnv.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnqlnv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnqlnv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnqlnv.Location = new System.Drawing.Point(0, 140);
+            this.btnqlnv.Location = new System.Drawing.Point(0, 175);
+            this.btnqlnv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnqlnv.Name = "btnqlnv";
-            this.btnqlnv.Size = new System.Drawing.Size(250, 40);
+            this.btnqlnv.Size = new System.Drawing.Size(281, 50);
             this.btnqlnv.TabIndex = 2;
             this.btnqlnv.Text = "Quản lí nhân viên";
             this.btnqlnv.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -277,9 +292,10 @@
             // 
             this.btnQlc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.btnQlc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQlc.Location = new System.Drawing.Point(0, 100);
+            this.btnQlc.Location = new System.Drawing.Point(0, 125);
+            this.btnQlc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnQlc.Name = "btnQlc";
-            this.btnQlc.Size = new System.Drawing.Size(250, 40);
+            this.btnQlc.Size = new System.Drawing.Size(281, 50);
             this.btnQlc.TabIndex = 1;
             this.btnQlc.Text = "Quản lí chung";
             this.btnQlc.UseVisualStyleBackColor = false;
@@ -288,8 +304,9 @@
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 100);
+            this.pictureBox1.Size = new System.Drawing.Size(281, 125);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -300,9 +317,10 @@
             this.panelContent.Controls.Add(this.panel1);
             this.panelContent.Controls.Add(this.pictureBox2);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(250, 0);
+            this.panelContent.Location = new System.Drawing.Point(281, 0);
+            this.panelContent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(839, 836);
+            this.panelContent.Size = new System.Drawing.Size(707, 883);
             this.panelContent.TabIndex = 2;
             // 
             // panel1
@@ -312,16 +330,18 @@
             this.panel1.Controls.Add(this.btnLogout_Click);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(839, 57);
+            this.panel1.Size = new System.Drawing.Size(707, 71);
             this.panel1.TabIndex = 1;
             // 
             // btnExit
             // 
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnExit.Location = new System.Drawing.Point(689, 0);
+            this.btnExit.Location = new System.Drawing.Point(539, 0);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 57);
+            this.btnExit.Size = new System.Drawing.Size(84, 71);
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -330,9 +350,10 @@
             // btnLogout_Click
             // 
             this.btnLogout_Click.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnLogout_Click.Location = new System.Drawing.Point(764, 0);
+            this.btnLogout_Click.Location = new System.Drawing.Point(623, 0);
+            this.btnLogout_Click.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLogout_Click.Name = "btnLogout_Click";
-            this.btnLogout_Click.Size = new System.Drawing.Size(75, 57);
+            this.btnLogout_Click.Size = new System.Drawing.Size(84, 71);
             this.btnLogout_Click.TabIndex = 0;
             this.btnLogout_Click.Text = "Đăng xuất";
             this.btnLogout_Click.UseVisualStyleBackColor = true;
@@ -341,19 +362,21 @@
             // pictureBox2
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 55);
+            this.pictureBox2.Location = new System.Drawing.Point(0, -93);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(839, 781);
+            this.pictureBox2.Size = new System.Drawing.Size(707, 976);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
             // Trangchu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1089, 836);
+            this.ClientSize = new System.Drawing.Size(988, 883);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelSidebar);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Trangchu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
