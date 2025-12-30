@@ -87,6 +87,18 @@
     <Compile Include="Ql_theloai.Designer.cs">
       <DependentUpon>Ql_theloai.cs</DependentUpon>
     </Compile>
+    <Compile Include="QL_Tracuu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QL_Tracuu.Designer.cs">
+      <DependentUpon>QL_Tracuu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QL_Trangthaisach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QL_Trangthaisach.Designer.cs">
+      <DependentUpon>QL_Trangthaisach.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanlyTacgia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +147,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ql_theloai.resx">
       <DependentUpon>Ql_theloai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QL_Tracuu.resx">
+      <DependentUpon>QL_Tracuu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QL_Trangthaisach.resx">
+      <DependentUpon>QL_Trangthaisach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanlyTacgia.resx">
       <DependentUpon>QuanlyTacgia.cs</DependentUpon>

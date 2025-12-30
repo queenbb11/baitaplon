@@ -154,5 +154,35 @@ namespace baitaplon
             // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
             this.Show();
         }
+
+        private void btnQLTrangThaiSach_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            // 2. Khởi tạo và mở Form Quản lý TTS
+            using (QL_Trangthaisach frmS = new QL_Trangthaisach())
+            {
+                // ShowDialog có nghĩa là phải tắt form thì mới quay lại được trang chủ
+                frmS.ShowDialog();
+            }
+
+            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            this.Show();
+        }
+
+        private void btnQLTraCuu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            // 2. Khởi tạo và mở Form Quản lý TTS
+            using (QL_Tracuu frmS = new QL_Tracuu())
+            {
+                // ShowDialog có nghĩa là phải tắt form thì mới quay lại được trang chủ
+                frmS.ShowDialog();
+            }
+
+            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            this.Show();
+        }
     }
 }

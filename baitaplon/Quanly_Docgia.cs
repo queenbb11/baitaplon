@@ -19,7 +19,7 @@ namespace baitaplon
     {
 
         SqlConnection con = new SqlConnection(
-           "Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True"
+           "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bai_tap_lon;Integrated Security=True"
        );
 
         public Quanly_Docgia()

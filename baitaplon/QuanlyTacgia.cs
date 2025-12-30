@@ -19,7 +19,7 @@ namespace baitaplon
 {
     public partial class QuanlyTacgia : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bai_tap_lon;Integrated Security=True");
         public QuanlyTacgia()
         {
             InitializeComponent();
