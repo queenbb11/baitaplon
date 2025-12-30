@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.panelSidebar = new System.Windows.Forms.Panel();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnThongKe = new System.Windows.Forms.Button();
             this.btnQLTraCuu = new System.Windows.Forms.Button();
             this.btnQLTrangThaiSach = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
@@ -62,9 +60,7 @@
             // panelSidebar
             // 
             this.panelSidebar.BackColor = System.Drawing.Color.PowderBlue;
-            this.panelSidebar.Controls.Add(this.button15);
-            this.panelSidebar.Controls.Add(this.button14);
-            this.panelSidebar.Controls.Add(this.button1);
+            this.panelSidebar.Controls.Add(this.btnThongKe);
             this.panelSidebar.Controls.Add(this.btnQLTraCuu);
             this.panelSidebar.Controls.Add(this.btnQLTrangThaiSach);
             this.panelSidebar.Controls.Add(this.button11);
@@ -87,42 +83,17 @@
             this.panelSidebar.TabIndex = 0;
             this.panelSidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSidebar_Paint);
             // 
-            // button15
+            // btnThongKe
             // 
-            this.button15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.Location = new System.Drawing.Point(0, 740);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(250, 40);
-            this.button15.TabIndex = 18;
-            this.button15.Text = "Quản lí phiêu trả";
-            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            this.button14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(0, 700);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(250, 40);
-            this.button14.TabIndex = 17;
-            this.button14.Text = "Quản lí phiêu trả";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(0, 660);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 40);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Thống kê";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
+            this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnThongKe.Location = new System.Drawing.Point(0, 660);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(250, 40);
+            this.btnThongKe.TabIndex = 16;
+            this.btnThongKe.Text = "Thống kê";
+            this.btnThongKe.UseVisualStyleBackColor = false;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // btnQLTraCuu
             // 
@@ -416,9 +387,7 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button btnQLTraCuu;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnLogout_Click;
         private System.Windows.Forms.Button btnExit;

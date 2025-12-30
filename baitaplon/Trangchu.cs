@@ -166,7 +166,7 @@ namespace baitaplon
                 frmS.ShowDialog();
             }
 
-            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            
             this.Show();
         }
 
@@ -181,7 +181,20 @@ namespace baitaplon
                 frmS.ShowDialog();
             }
 
-            // 3. Sau khi tắt form nhân viên thì hiện lại trang chủ
+            
+            this.Show();
+        }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            // 2. Khởi tạo và mở Form Quản lý TTS
+            using (ThongKe frmS = new ThongKe())
+            {
+                // ShowDialog có nghĩa là phải tắt form thì mới quay lại được trang chủ
+                frmS.ShowDialog();
+            }
+
+            
             this.Show();
         }
     }
