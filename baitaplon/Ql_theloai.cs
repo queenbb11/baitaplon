@@ -16,7 +16,7 @@ namespace baitaplon
 {
     public partial class Ql_theloai : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bai_tap_lon;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True");
         public Ql_theloai()
         {
             InitializeComponent();

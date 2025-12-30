@@ -12,7 +12,7 @@ namespace baitaplon
     internal class Thuvien
     {
         public static
-        SqlConnection con = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bai_tap_lon;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True");
         public static void hienthi_luoi(DataGridView dgv, string sql)
         {
             //kết nối db

@@ -18,7 +18,7 @@ namespace baitaplon
     public partial class Nha_xuat_ban : Form
     {
         // BƯỚC ĐẦU TIÊN VÀO LÀ KẾT NỐI VỚI CSDL
-        SqlConnection con = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bai_tap_lon;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True");
         public Nha_xuat_ban()
         {
             InitializeComponent();

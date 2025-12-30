@@ -14,7 +14,7 @@ namespace baitaplon
 {
     public partial class Ql_khosach : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bai_tap_lon;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True");
 
         public Ql_khosach()
         {

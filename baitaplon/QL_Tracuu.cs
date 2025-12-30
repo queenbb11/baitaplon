@@ -8,7 +8,7 @@ namespace baitaplon
     public partial class QL_Tracuu : Form
     {
         SqlConnection con = new SqlConnection(
-            "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bai_tap_lon;Integrated Security=True"
+            "Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True"
         );
 
         public QL_Tracuu()

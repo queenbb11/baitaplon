@@ -18,7 +18,7 @@ namespace baitaplon
             InitializeComponent();
         }
         SqlConnection con = new SqlConnection(
-            "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bai_tap_lon;Integrated Security=True"
+            "Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True"
         );
 
         private void ThongKe_Load(object sender, EventArgs e)

@@ -10,7 +10,7 @@ namespace Quanlythuvien
 {
     public partial class Quanly_Nhanvien : Form
     {
-        string strCon = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bai_tap_lon;Integrated Security=True";
+        string strCon = "Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True";
 
         public Quanly_Nhanvien()
         {
