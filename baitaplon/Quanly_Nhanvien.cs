@@ -1,4 +1,5 @@
-﻿using baitaplon;
+﻿
+using baitaplon;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -24,7 +25,7 @@ namespace Quanlythuvien
             {
                 con.Open();
                 SqlDataAdapter da = new SqlDataAdapter(
-                    "SELECT Manhanvien, Tennhanvien, Gioitinh, Dienthoai, Ngaysinh, Emai, Diachi FROM Thongtin_nhanvien",
+                    "SELECT Manhanvien, Tennhanvien, Gioitinh, Dienthoai, Ngaysinh, Email, Diachi FROM Thongtin_nhanvien",
                     con);
 
                 DataTable dt = new DataTable();
@@ -68,7 +69,7 @@ namespace Quanlythuvien
             txtTnv2.Text = row.Cells["Tennhanvien"].Value?.ToString();
             cbGt2.Text = row.Cells["Gioitinh"].Value?.ToString();
             txtDt2.Text = row.Cells["Dienthoai"].Value?.ToString();
-            txtEmail.Text = row.Cells["Emai"].Value?.ToString();
+            txtEmail.Text = row.Cells["Email"].Value?.ToString();
             txtDc.Text = row.Cells["Diachi"].Value?.ToString();
 
             if (row.Cells["Ngaysinh"].Value != DBNull.Value)
@@ -125,10 +126,10 @@ namespace Quanlythuvien
         private void btnTk_Click(object sender, EventArgs e)
         {
 
-            string ma = txtMnv1.Text.Trim();
-            string ten = txtTnv1.Text.Trim();
-            string gt = cbGt1.Text.Trim();
-            string dt = txtDt1.Text.Trim();
+            string ma = txtMnv2.Text.Trim();
+            string ten = txtTnv2.Text.Trim();
+            string gt = cbGt2.Text.Trim();
+            string dt = txtDt2.Text.Trim();
 
             using (SqlConnection con = new SqlConnection(strCon))
             {
@@ -200,7 +201,7 @@ namespace Quanlythuvien
                 "Ngaysinh = '" + ns.ToString("yyyy-MM-dd") + "', " +
                 "Gioitinh = N'" + gt + "', " +
                 "Dienthoai = '" + dt + "', " +
-                "Emai = '" + email + "', " +
+                "Email = '" + email + "', " +
                 "Diachi = N'" + dc + "' " +
                 "WHERE Manhanvien = '" + ma + "'";
 
@@ -258,7 +259,7 @@ namespace Quanlythuvien
             using (SqlConnection con = new SqlConnection(strCon))
             {
                 con.Open();
-                string sql = "SELECT Manhanvien, Tennhanvien, Ngaysinh, Gioitinh, Dienthoai, Emai, Diachi FROM Thongtin_nhanvien";
+                string sql = "SELECT Manhanvien, Tennhanvien, Ngaysinh, Gioitinh, Dienthoai, Email, Diachi FROM Thongtin_nhanvien";
                 SqlDataAdapter da = new SqlDataAdapter(sql, con);
                 da.Fill(tb);
             }
@@ -332,7 +333,7 @@ namespace Quanlythuvien
                 oSheet.Cells[row, 3] = Convert.ToDateTime(r["Ngaysinh"]).ToString("dd/MM/yyyy");
                 oSheet.Cells[row, 4] = r["Gioitinh"];   
                 oSheet.Cells[row, 5] = r["Dienthoai"];
-                oSheet.Cells[row, 6] = r["Emai"];
+                oSheet.Cells[row, 6] = r["Email"];
                 oSheet.Cells[row, 7] = r["Diachi"];
                 row++;
             }
@@ -347,6 +348,11 @@ namespace Quanlythuvien
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

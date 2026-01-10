@@ -6,72 +6,92 @@ namespace baitaplon
 {
     public partial class Dangnhap : Form
     {
-        // Cập nhật chuỗi kết nối
-        string conStr = @"Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True";
+        private string conStr =
+            @"Data Source=.;Initial Catalog=bai_tap_lon;Integrated Security=True;TrustServerCertificate=True";
+
+        // Trả về cho DieuHuong
+        public bool IsAdmin { get; private set; }
+        public string TenUser { get; private set; }
 
         public Dangnhap()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
-            // txtPass.UseSystemPasswordChar = true; 
+            StartPosition = FormStartPosition.CenterScreen;
+            txtPass.UseSystemPasswordChar = true;
         }
 
-        // Nút Đăng Nhập
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUser.Text) || string.IsNullOrWhiteSpace(txtPass.Text))
+            string user = txtUser.Text.Trim();
+            string pass = txtPass.Text.Trim();
+
+            if (user == "" || pass == "")
             {
-                MessageBox.Show("Vui lòng nhập Tài khoản và Mật khẩu");
+                MessageBox.Show("Vui lòng nhập tài khoản và mật khẩu!");
                 return;
             }
 
+            // ================= ADMIN CỐ ĐỊNH =================
+            if (user == "admin" && pass == "admin")
+            {
+                IsAdmin = true;
+                TenUser = "ADMIN";
+
+                MessageBox.Show("Đăng nhập Admin thành công!");
+                DialogResult = DialogResult.OK;
+                Close();
+                return;
+            }
+
+            // ================= USER TRONG DATABASE =================
             try
             {
                 using (SqlConnection con = new SqlConnection(conStr))
                 {
                     con.Open();
 
-                    // 1. Sửa câu lệnh SQL theo bảng Dangky_Dangnhap
-                    string sql = "SELECT TenNV FROM Dangky_Dangnhap WHERE Taikhoan=@u AND Matkhau=@p";
+                    string sql = @"
+                        SELECT TenUser
+                        FROM Dangky_Dangnhap
+                        WHERE Taikhoan = @u AND Matkhau = @p";
 
-                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@u", user);
+                    cmd.Parameters.AddWithValue("@p", pass);
+
+                    SqlDataReader rd = cmd.ExecuteReader();
+
+                    if (rd.Read())
                     {
-                        cmd.Parameters.AddWithValue("@u", txtUser.Text.Trim());
-                        cmd.Parameters.AddWithValue("@p", txtPass.Text.Trim());
+                        IsAdmin = false;
+                        TenUser = rd["TenUser"].ToString();
 
-                        using (SqlDataReader rd = cmd.ExecuteReader())
-                        {
-                            if (rd.Read())
-                            {
-                                // Lấy tên nhân viên để hiển thị
-                                string ten = rd["TenNV"].ToString();
-                                MessageBox.Show("Đăng nhập thành công! Xin chào " + ten);
-
-                                // Báo OK để Program mở Trang chủ
-                                this.DialogResult = DialogResult.OK;
-                                this.Close();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Sai Tài khoản hoặc Mật khẩu!");
-                            }
-                        }
+                        MessageBox.Show("Đăng nhập thành công!");
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi kết nối: " + ex.Message);
+                MessageBox.Show("Lỗi đăng nhập: " + ex.Message);
             }
         }
 
-        // Nút "Quay lại Đăng ký"
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            // Báo RETRY để Program quay lại form Đăng ký
-            this.DialogResult = DialogResult.Retry;
-            this.Close();
+            DialogResult = DialogResult.Retry;
+            Close();
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
     }
 }

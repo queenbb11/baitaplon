@@ -56,12 +56,6 @@
     <Compile Include="Dangnhap.Designer.cs">
       <DependentUpon>Dangnhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="data_dki_dn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="data_dki_dn.Designer.cs">
-      <DependentUpon>data_dki_dn.cs</DependentUpon>
-    </Compile>
     <Compile Include="DieuHuong.cs" />
     <Compile Include="Nha_xuat_ban.cs">
       <SubType>Form</SubType>
@@ -123,14 +117,20 @@
     <Compile Include="ThongKe.Designer.cs">
       <DependentUpon>ThongKe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Thuvien.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Trangchu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Trangchu.Designer.cs">
       <DependentUpon>Trangchu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Thuvien.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user.Designer.cs">
+      <DependentUpon>user.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dangki.resx">
@@ -138,9 +138,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dangnhap.resx">
       <DependentUpon>Dangnhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="data_dki_dn.resx">
-      <DependentUpon>data_dki_dn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nha_xuat_ban.resx">
       <DependentUpon>Nha_xuat_ban.cs</DependentUpon>
@@ -174,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trangchu.resx">
       <DependentUpon>Trangchu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user.resx">
+      <DependentUpon>user.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
   </ItemGroup>

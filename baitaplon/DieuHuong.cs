@@ -1,68 +1,60 @@
-﻿using System;
+﻿
 using System.Windows.Forms;
-
 
 namespace baitaplon
 {
     public static class DieuHuong
     {
-        /// <summary>
-        /// Hàm này đóng vai trò là "Bộ não" điều khiển luồng chạy của ứng dụng
-        /// </summary>
         public static void ChayUngDung()
         {
-            // Vòng lặp để giữ ứng dụng chạy cho đến khi người dùng muốn thoát hẳn
-            bool isRunning = true;
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-            while (isRunning)
+            while (true)
             {
-                // Bước 1: Khởi tạo và hiển thị Form Đăng Nhập
-                using (Dangnhap frmLogin = new Dangnhap())
+                using (Dangnhap login = new Dangnhap())
                 {
-                    DialogResult loginResult = frmLogin.ShowDialog();
+                    DialogResult rs = login.ShowDialog();
 
-                    // TRƯỜNG HỢP A: Đăng nhập thành công -> Vào Trang chủ
-                    if (loginResult == DialogResult.OK)
+                    // Thoát chương trình
+                    if (rs == DialogResult.Cancel)
+                        break;
+
+                    // Mở form đăng ký
+                    if (rs == DialogResult.Retry)
                     {
-                        using (Trangchu frmHome = new Trangchu())
+                        using (Dangki dk = new Dangki())
                         {
-                            DialogResult homeResult = frmHome.ShowDialog();
+                            dk.ShowDialog();
+                        }
+                        continue;
+                    }
 
-                            // Nếu Trang chủ trả về Retry (Đăng xuất) -> Lặp lại vòng while (Mở lại Login)
-                            if (homeResult == DialogResult.Retry)
+                    // Đăng nhập thành công
+                    if (rs == DialogResult.OK)
+                    {
+                        // ===== ADMIN =====
+                        if (login.IsAdmin)
+                        {
+                            using (Trangchu admin = new Trangchu())
                             {
-                                continue;
-                            }
-                            // Nếu đóng trang chủ (Cancel hoặc OK) -> Thoát vòng lặp
-                            else
-                            {
-                                isRunning = false;
+                                if (admin.ShowDialog() == DialogResult.Retry)
+                                    continue; // Logout → quay lại đăng nhập
+                                else
+                                    break;
                             }
                         }
-                    }
-                    // TRƯỜNG HỢP B: Người dùng bấm nút "Đăng ký" ở form Login -> Vào Đăng ký
-                    else if (loginResult == DialogResult.Retry)
-                    {
-                        using (Dangki frmRegister = new Dangki())
+                        // ===== USER =====
+                        else
                         {
-                            DialogResult regResult = frmRegister.ShowDialog();
-
-                            // Đăng ký thành công (OK) -> Lặp lại vòng while (Quay lại Login để đăng nhập)
-                            if (regResult == DialogResult.OK)
+                            using (user user = new user())
                             {
-                                continue;
-                            }
-                            // Nếu hủy đăng ký -> Thoát
-                            else
-                            {
-                                isRunning = false;
+                                if (user.ShowDialog() == DialogResult.Retry)
+                                    continue; // Logout
+                                else
+                                    break;
                             }
                         }
-                    }
-                    // TRƯỜNG HỢP C: Người dùng tắt form đăng nhập -> Thoát ứng dụng
-                    else
-                    {
-                        isRunning = false;
                     }
                 }
             }
