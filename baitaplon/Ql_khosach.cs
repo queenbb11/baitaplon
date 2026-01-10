@@ -47,15 +47,16 @@ namespace baitaplon
         // kiểm tra trùng MaK 
         private bool checktrungMaK(string mk)
         {
+            
+
             if (con.State == ConnectionState.Closed)
                 con.Open();
-
             string sql = "SELECT COUNT(*) FROM Khosach WHERE MaK = '" + mk + "' ";
             SqlCommand cmd = new SqlCommand(sql, con);
             int kq = (int)cmd.ExecuteScalar();
-            con.Close();
+            if (kq > 0) return true;
+            else return false;
 
-            return kq > 0;
         }
 
         // ===== THÊM =====
@@ -88,6 +89,12 @@ namespace baitaplon
             catch
             {
                 MessageBox.Show("Số lượng nhập / xuất phải là số nguyên!");
+                return;
+            }
+            if (slx > sln)
+            {
+                MessageBox.Show("Số lượng xuất không được lớn hơn số lượng nhập!");
+                txtSLX.Focus();
                 return;
             }
 
@@ -172,6 +179,8 @@ namespace baitaplon
             cboMaS.SelectedIndex = -1;
             txtSLN.Clear();
             txtSLX.Clear();
+            txtMaK_tk.Clear();
+            cboMaS_tk.SelectedIndex = -1;
             txtMaK.Enabled = true;
             txtMaK.Focus();
             load_Khosach();
@@ -309,6 +318,12 @@ namespace baitaplon
             txtSLN.Text = dgvKhosach.Rows[i].Cells[2].Value.ToString();
             txtSLX.Text = dgvKhosach.Rows[i].Cells[3].Value.ToString();
             txtMaK.Enabled = false;
+        }
+        //NHẬP FILE
+
+        private void btnNhapfile_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ex_cel = Microsoft.Office.Interop.Excel;
-
+using xls = Microsoft.Office.Interop.Excel;
 
 namespace baitaplon
 {
@@ -39,29 +39,17 @@ namespace baitaplon
         {
 
         }
-
-        
-        // chon tren luoi, nos day xuong phan nhap
-        
-
-
-        //ktr để khi thêm trùng mã tg thì thông báo lỗi
-        private bool checktrungMatg(string mtl)
+        //ktr để khi thêm trùng mã tl thì thông báo lỗi
+        private bool checktrungMatl(string mtl)
         {
-            // kết nối db
-
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3 tạo đối tượng comand để thực thi câu lệnh sql
             string sql = "Select count (*) from Theloai Where MaTL = '" + mtl + "' ";
             SqlCommand cmd = new SqlCommand(sql, con);
-            int kq = (int)cmd.ExecuteScalar(); //ép kiểu
-            //kiểm tra
-            if (kq > 0) return true; // trùng mã
-            else return false; //không trùng
+            int kq = (int)cmd.ExecuteScalar();
+            if (kq > 0) return true;
+            else return false;
         }
-
-
         //Lưu
         private void button1_Click(object sender, EventArgs e)
         {
@@ -82,7 +70,7 @@ namespace baitaplon
                 return;
             }
             //kiểm tra trùng mã
-            if (checktrungMatg(mtl))
+            if (checktrungMatl(mtl))
             {
                 txtMaTL.Focus();
                 MessageBox.Show("Trùng mã thể loại");
@@ -98,10 +86,8 @@ namespace baitaplon
         //Sửa
         private void btnSua_Click(object sender, EventArgs e)
         {
-
             string mtl = txtMaTL.Text.Trim();
             string tentl = txtTenTL.Text.Trim();
-
             string sql = "UPDATE Theloai SET TenTL = N'" + tentl + "' WHERE MaTL = '" + mtl + "'";
             Thuvien.ins_upd_del(sql);
 
@@ -110,16 +96,42 @@ namespace baitaplon
         }
 
         //XÓA
+        //KIỂM TRA MATL TỒN TẠI TRONG SÁCH?
+        private bool checkTheLoaiDangSuDung(string mtl)
+        {
+            string sql = "SELECT * FROM Sach WHERE MaTL = '" + mtl + "'";
+            DataTable tb = Thuvien.Getdatatable(sql);
+            return tb.Rows.Count > 0;
+        }
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
-          
-            string mtl = txtMaTL.Text;
 
-            DialogResult xoa = MessageBox.Show("Bạn có muốn xóa không?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (xoa == DialogResult.No)
+            string mtl = txtMaTL.Text.Trim();
+            if (string.IsNullOrEmpty(mtl))
+            {
+                MessageBox.Show("Vui lòng chọn thể loại cần xóa");
                 return;
-            string sql = "Delete from Theloai Where MaTL = '" + mtl + "' ";
+            }
+            // kiểm tra khóa ngoại
+            if (checkTheLoaiDangSuDung(mtl))
+            {
+                MessageBox.Show(
+                    "Không thể xóa!\nThể loại đang được sử dụng trong bảng Sách.",
+                    "Lỗi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+            DialogResult xoa = MessageBox.Show(  "Bạn có chắc chắn muốn xóa không?",   "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+            if (xoa == DialogResult.No) return;
+            string sql = "DELETE FROM Theloai WHERE MaTL = '" + mtl + "'";
             Thuvien.ins_upd_del(sql);
+
             MessageBox.Show("Xóa thành công");
             load_theloai();
         }
@@ -218,7 +230,6 @@ namespace baitaplon
                 "FROM Theloai " +
                 "WHERE MaTL LIKE N'%" + mtl + "%' " +
                 "AND TenTL LIKE N'%" + tentl + "%'";
-
             DataTable tb = Thuvien.Getdatatable(sql);
             ExportExcel(tb, "DSTheloai");
         }
@@ -240,11 +251,13 @@ namespace baitaplon
         {
             txtMaTL.Clear();
             txtTenTL.Clear();
+            txtMaTL_tk.Clear();
+            txtTenTL_tk.Clear();
             txtMaTL.Enabled = true;
             txtMaTL.Focus();
             load_theloai();
         }
-
+        // chon tren luoi, nos day xuong phan nhap
         private void dgvTheloai_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return; // click header thì bỏ qua
@@ -254,6 +267,90 @@ namespace baitaplon
            
             // không cho sửa mã 
             txtMaTL.Enabled = false;
+        }
+        //NHẬP FILE
+        // NHẬP FILE THỂ LOẠI
+        private void ReadExcel_TheLoai(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                MessageBox.Show("Chưa chọn file");
+                return;
+            }
+
+            xls.Application excel = new xls.Application();
+            xls.Workbook wb = null;
+            int count = 0;
+
+            try
+            {
+                wb = excel.Workbooks.Open(filePath);
+
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                foreach (xls.Worksheet ws in wb.Worksheets)
+                {
+                    int i = 2; //  dữ liệu bắt đầu từ dòng 2
+
+                    while (true)
+                    {
+                        var vMaTL = ws.Cells[i, 2].Value2; // cột B
+                        var vTenTL = ws.Cells[i, 3].Value2; // cột C
+
+                        // HẾT DỮ LIỆU KHI MÃ TL TRỐNG
+                        if (vMaTL == null) break;
+                        string mtl = vMaTL.ToString().Trim();
+                        string tentl = vTenTL?.ToString().Trim();
+
+                        if (string.IsNullOrWhiteSpace(mtl) || string.IsNullOrWhiteSpace(tentl))
+                        {
+                            i++;
+                            continue;
+                        }
+
+                        // check trùng
+                        if (checktrungMatl(mtl))
+                        {
+                            i++;
+                            continue;
+                        }
+
+                        string sql = "INSERT INTO Theloai VALUES('" + mtl + "', N'" + tentl + "')";
+                        using (SqlCommand cmd = new SqlCommand(sql, con))
+                        {
+                            cmd.ExecuteNonQuery();
+                            count++;
+                        }
+
+                        i++;
+                    }
+                }
+
+                MessageBox.Show($"Nhập Excel thành công! {count} dòng được thêm.");
+                load_theloai();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi nhập Excel: " + ex.Message);
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                if (wb != null) wb.Close(false);
+                excel.Quit();
+            }
+        }
+
+        private void btnNhapfile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Excel Files|*.xls;*.xlsx";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                ReadExcel_TheLoai(ofd.FileName);
+            }
         }
     }
 }

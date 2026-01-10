@@ -57,17 +57,16 @@ namespace baitaplon
         //ktr để khi thêm trùng mã thì thông báo lỗi
         private bool checktrungMas(string ms)
         {
-            // kết nối db
-
+            
+          
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3 tạo đối tượng comand để thực thi câu lệnh sql
             string sql = "Select count (*) from Sach Where MaS= '" + ms + "' ";
             SqlCommand cmd = new SqlCommand(sql, con);
-            int kq = (int)cmd.ExecuteScalar(); //ép kiểu
-            //kiểm tra
-            if (kq > 0) return true; // trùng mã
-            else return false; //không trùng
+            int kq = (int)cmd.ExecuteScalar();
+            if (kq > 0) return true;
+            else return false;
+
         }
 
 
@@ -200,7 +199,7 @@ namespace baitaplon
             MessageBox.Show("Sửa thành công!!!");
             load_Sach();
         }
-
+        //-----XÓA--------
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string ms = txtMaS.Text;

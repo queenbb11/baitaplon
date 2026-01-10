@@ -63,6 +63,11 @@
     <Compile Include="Nha_xuat_ban.Designer.cs">
       <DependentUpon>Nha_xuat_ban.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Ql_khosach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +147,10 @@
     <EmbeddedResource Include="Nha_xuat_ban.resx">
       <DependentUpon>Nha_xuat_ban.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ql_khosach.resx">
       <DependentUpon>Ql_khosach.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +217,15 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngtree-user-icon-png-image_5097430.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngtree-circle-password-icon-vectors-png-image_1738057.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ảnh chụp màn hình 2026-01-10 221900.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

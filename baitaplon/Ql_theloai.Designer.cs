@@ -49,6 +49,7 @@
             this.txtMaTL_tk = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnNhapfile = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTheloai)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -70,6 +71,7 @@
             this.groupBox1.Controls.Add(this.txtMaTL);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(70, 254);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(756, 170);
@@ -96,7 +98,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(71, 116);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 19);
+            this.label3.Size = new System.Drawing.Size(88, 19);
             this.label3.TabIndex = 1;
             this.label3.Text = "Tên thể loại";
             // 
@@ -105,7 +107,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(75, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 19);
+            this.label2.Size = new System.Drawing.Size(86, 19);
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã thể loại";
             // 
@@ -201,7 +203,7 @@
             // 
             // btnXuatfile
             // 
-            this.btnXuatfile.Location = new System.Drawing.Point(898, 156);
+            this.btnXuatfile.Location = new System.Drawing.Point(898, 141);
             this.btnXuatfile.Name = "btnXuatfile";
             this.btnXuatfile.Size = new System.Drawing.Size(97, 30);
             this.btnXuatfile.TabIndex = 10;
@@ -215,6 +217,7 @@
             this.groupBox2.Controls.Add(this.txtMaTL_tk);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(76, 92);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(750, 119);
@@ -241,7 +244,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(82, 91);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 19);
+            this.label4.Size = new System.Drawing.Size(88, 19);
             this.label4.TabIndex = 5;
             this.label4.Text = "Tên thể loại";
             // 
@@ -250,15 +253,27 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(86, 25);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 19);
+            this.label5.Size = new System.Drawing.Size(86, 19);
             this.label5.TabIndex = 4;
             this.label5.Text = "Mã thể loại";
+            // 
+            // btnNhapfile
+            // 
+            this.btnNhapfile.Location = new System.Drawing.Point(898, 193);
+            this.btnNhapfile.Name = "btnNhapfile";
+            this.btnNhapfile.Size = new System.Drawing.Size(97, 30);
+            this.btnNhapfile.TabIndex = 12;
+            this.btnNhapfile.Text = "Nhập file";
+            this.btnNhapfile.UseVisualStyleBackColor = true;
+            this.btnNhapfile.Click += new System.EventHandler(this.btnNhapfile_Click);
             // 
             // Ql_theloai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 707);
+            this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(1032, 701);
+            this.Controls.Add(this.btnNhapfile);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnXuatfile);
             this.Controls.Add(this.btnXoa);
@@ -306,5 +321,6 @@
         private System.Windows.Forms.TextBox txtMaTL_tk;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnNhapfile;
     }
 }

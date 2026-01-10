@@ -50,6 +50,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
+            this.btnNhapfile = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhosach)).BeginInit();
@@ -71,6 +72,7 @@
             this.groupBox1.Controls.Add(this.txtMaK_tk);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(76, 121);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(711, 123);
@@ -98,7 +100,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(209, 86);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 19);
+            this.label6.Size = new System.Drawing.Size(67, 19);
             this.label6.TabIndex = 9;
             this.label6.Text = "Mã sách";
             // 
@@ -107,7 +109,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(214, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 19);
+            this.label7.Size = new System.Drawing.Size(62, 19);
             this.label7.TabIndex = 8;
             this.label7.Text = "Mã kho";
             // 
@@ -121,6 +123,7 @@
             this.groupBox2.Controls.Add(this.txtMaK);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(81, 281);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(755, 139);
@@ -155,7 +158,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(382, 87);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 19);
+            this.label4.Size = new System.Drawing.Size(102, 19);
             this.label4.TabIndex = 9;
             this.label4.Text = "Số lượng xuất";
             // 
@@ -164,7 +167,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(382, 36);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 19);
+            this.label5.Size = new System.Drawing.Size(105, 19);
             this.label5.TabIndex = 8;
             this.label5.Text = "Số lượng nhập";
             this.label5.Click += new System.EventHandler(this.label5_Click);
@@ -181,7 +184,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(20, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 19);
+            this.label3.Size = new System.Drawing.Size(67, 19);
             this.label3.TabIndex = 5;
             this.label3.Text = "Mã sách";
             // 
@@ -190,7 +193,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(25, 33);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 19);
+            this.label2.Size = new System.Drawing.Size(62, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "Mã kho";
             // 
@@ -207,7 +210,7 @@
             // 
             // btnXuatfile
             // 
-            this.btnXuatfile.Location = new System.Drawing.Point(879, 165);
+            this.btnXuatfile.Location = new System.Drawing.Point(879, 145);
             this.btnXuatfile.Name = "btnXuatfile";
             this.btnXuatfile.Size = new System.Drawing.Size(97, 30);
             this.btnXuatfile.TabIndex = 16;
@@ -265,11 +268,23 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
+            // btnNhapfile
+            // 
+            this.btnNhapfile.Location = new System.Drawing.Point(879, 196);
+            this.btnNhapfile.Name = "btnNhapfile";
+            this.btnNhapfile.Size = new System.Drawing.Size(97, 30);
+            this.btnNhapfile.TabIndex = 17;
+            this.btnNhapfile.Text = "Nhập file";
+            this.btnNhapfile.UseVisualStyleBackColor = true;
+            this.btnNhapfile.Click += new System.EventHandler(this.btnNhapfile_Click);
+            // 
             // Ql_khosach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1026, 696);
+            this.Controls.Add(this.btnNhapfile);
             this.Controls.Add(this.btnXuatfile);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnTimkiem);
@@ -318,5 +333,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboMaS;
+        private System.Windows.Forms.Button btnNhapfile;
     }
 }
