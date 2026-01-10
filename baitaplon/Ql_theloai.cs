@@ -42,14 +42,7 @@ namespace baitaplon
 
         
         // chon tren luoi, nos day xuong phan nhap
-        private void dgvDanhsach_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i = e.RowIndex;
-            txtMaTL.Text = dgvTheloai.Rows[i].Cells[0].Value.ToString();
-            txtTenTL.Text = dgvTheloai.Rows[i].Cells[1].Value.ToString();
-            //thuoc tinh nao khong ddc sua, thì cho mờ đi
-            txtMaTL.Enabled = false;
-        }
+        
 
 
         //ktr để khi thêm trùng mã tg thì thông báo lỗi
@@ -105,14 +98,14 @@ namespace baitaplon
         //Sửa
         private void btnSua_Click(object sender, EventArgs e)
         {
-          
+
             string mtl = txtMaTL.Text.Trim();
-            string tentl = txtTenTL.Text.Trim(); 
-            
-            string sql = "Update Theloai set TenTL = '" + mtl + "',N'" + tentl + "' Where MaTL = '" + mtl + "' ";
+            string tentl = txtTenTL.Text.Trim();
+
+            string sql = "UPDATE Theloai SET TenTL = N'" + tentl + "' WHERE MaTL = '" + mtl + "'";
             Thuvien.ins_upd_del(sql);
+
             MessageBox.Show("Sửa thành công!!!");
-            //gọi 
             load_theloai();
         }
 
@@ -250,6 +243,17 @@ namespace baitaplon
             txtMaTL.Enabled = true;
             txtMaTL.Focus();
             load_theloai();
+        }
+
+        private void dgvTheloai_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return; // click header thì bỏ qua
+            int i = e.RowIndex;
+            txtMaTL.Text = dgvTheloai.Rows[i].Cells["MaTL"].Value.ToString();
+            txtTenTL.Text = dgvTheloai.Rows[i].Cells["TenTL"].Value.ToString();
+           
+            // không cho sửa mã 
+            txtMaTL.Enabled = false;
         }
     }
 }

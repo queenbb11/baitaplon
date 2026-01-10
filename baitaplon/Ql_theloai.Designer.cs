@@ -122,6 +122,7 @@
             this.dgvTheloai.RowTemplate.Height = 28;
             this.dgvTheloai.Size = new System.Drawing.Size(956, 214);
             this.dgvTheloai.TabIndex = 4;
+            this.dgvTheloai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTheloai_CellClick);
             this.dgvTheloai.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTheloai_RowPostPaint);
             // 
             // STT
