@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ex_cel = Microsoft.Office.Interop.Excel;
 using xls = Microsoft.Office.Interop.Excel;
-using System.Text.RegularExpressions;
+
 namespace baitaplon
 {
     public partial class Ql_Sach : Form

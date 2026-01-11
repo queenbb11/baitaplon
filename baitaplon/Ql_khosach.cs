@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ex_cel = Microsoft.Office.Interop.Excel;
@@ -177,22 +176,26 @@ namespace baitaplon
         //Xóa theo Mã kho (MaK) ⇒ xóa tất cả sách trong kho đó (xóa hàng loạt)
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string ms = cboMaS.Text;
-            if (string.IsNullOrEmpty(ms))
+            string mk = txtMaK.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(mk))
             {
-                MessageBox.Show("Vui lòng chọn mã sách cần xóa");
+                MessageBox.Show("Vui lòng chọn / nhập mã kho cần xóa!");
+                txtMaK.Focus();
                 return;
             }
-        
+
             DialogResult xoa = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận",
-                 MessageBoxButtons.YesNo,
-                 MessageBoxIcon.Question
-             );
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question
+               );
+
             if (xoa == DialogResult.No) return;
 
-            string sql = "DELETE FROM Khosach WHERE MaS = '" + ms + "' ";
+            string sql = "DELETE FROM Khosach WHERE MaK = N'" + mk + "'";
             Thuvien.ins_upd_del(sql);
-            MessageBox.Show("Xóa thành công");
+
+            MessageBox.Show("Xóa thành công!");
             load_Khosach();
         }
 
@@ -324,11 +327,12 @@ namespace baitaplon
             ExportExcel_Khosach(tb, "DSKhoSach");
         }
 
-        private void dgvTheloai_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void dgvKhosach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            if (dgvKhosach.Rows[e.RowIndex].IsNewRow)
-                return;
-            dgvKhosach.Rows[e.RowIndex].Cells["STT"].Value = e.RowIndex + 1;
+            if (dgvKhosach.Rows[e.RowIndex].IsNewRow) return;
+
+            if (dgvKhosach.Columns.Contains("STT"))
+                dgvKhosach.Rows[e.RowIndex].Cells["STT"].Value = e.RowIndex + 1;
         }
 
         private void dgvKhosach_CellClick(object sender, DataGridViewCellEventArgs e)
