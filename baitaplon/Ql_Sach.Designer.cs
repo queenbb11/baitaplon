@@ -78,7 +78,7 @@
             this.dgvSach.Name = "dgvSach";
             this.dgvSach.RowHeadersWidth = 62;
             this.dgvSach.RowTemplate.Height = 28;
-            this.dgvSach.Size = new System.Drawing.Size(969, 199);
+            this.dgvSach.Size = new System.Drawing.Size(956, 199);
             this.dgvSach.TabIndex = 0;
             this.dgvSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSach_CellClick);
             // 
@@ -351,7 +351,7 @@
             // btnTimkiem
             // 
             this.btnTimkiem.BackColor = System.Drawing.Color.Fuchsia;
-            this.btnTimkiem.Location = new System.Drawing.Point(935, 94);
+            this.btnTimkiem.Location = new System.Drawing.Point(935, 96);
             this.btnTimkiem.Name = "btnTimkiem";
             this.btnTimkiem.Size = new System.Drawing.Size(91, 28);
             this.btnTimkiem.TabIndex = 4;
@@ -362,7 +362,7 @@
             // btnXuatfile
             // 
             this.btnXuatfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnXuatfile.Location = new System.Drawing.Point(935, 138);
+            this.btnXuatfile.Location = new System.Drawing.Point(935, 140);
             this.btnXuatfile.Name = "btnXuatfile";
             this.btnXuatfile.Size = new System.Drawing.Size(91, 28);
             this.btnXuatfile.TabIndex = 5;
@@ -373,7 +373,7 @@
             // btnLuu
             // 
             this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnLuu.Location = new System.Drawing.Point(935, 262);
+            this.btnLuu.Location = new System.Drawing.Point(935, 264);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(91, 28);
             this.btnLuu.TabIndex = 6;
@@ -384,7 +384,7 @@
             // btnSua
             // 
             this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnSua.Location = new System.Drawing.Point(935, 312);
+            this.btnSua.Location = new System.Drawing.Point(935, 314);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(91, 28);
             this.btnSua.TabIndex = 7;
@@ -395,7 +395,7 @@
             // btnXoa
             // 
             this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnXoa.Location = new System.Drawing.Point(935, 355);
+            this.btnXoa.Location = new System.Drawing.Point(935, 357);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(91, 28);
             this.btnXoa.TabIndex = 8;
@@ -406,7 +406,7 @@
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnReset.Location = new System.Drawing.Point(935, 404);
+            this.btnReset.Location = new System.Drawing.Point(935, 406);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(91, 28);
             this.btnReset.TabIndex = 9;
@@ -417,7 +417,7 @@
             // btnNhapfile
             // 
             this.btnNhapfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnNhapfile.Location = new System.Drawing.Point(935, 186);
+            this.btnNhapfile.Location = new System.Drawing.Point(935, 188);
             this.btnNhapfile.Name = "btnNhapfile";
             this.btnNhapfile.Size = new System.Drawing.Size(91, 28);
             this.btnNhapfile.TabIndex = 10;
