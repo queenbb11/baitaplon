@@ -6,10 +6,12 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ex_cel = Microsoft.Office.Interop.Excel;
-
+using xls = Microsoft.Office.Interop.Excel;
+using System.Text.RegularExpressions;
 namespace baitaplon
 {
     public partial class Ql_khosach : Form
@@ -60,6 +62,12 @@ namespace baitaplon
         }
 
         // ===== THÊM =====
+        //FORMAT MAK " MK__"
+        private bool CheckFormatMaK(string mk)
+        {
+         
+            return Regex.IsMatch(mk, @"^MK\d{2}$");
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string mk = txtMaK.Text.Trim();
@@ -103,6 +111,13 @@ namespace baitaplon
             {
                 txtMaK.Focus();
                 MessageBox.Show("Trùng mã kho");
+                return;
+            }
+            // kiểm tra format
+            if (!CheckFormatMaK(mk))
+            {
+                MessageBox.Show("Mã thể loại phải có dạng MK01, MK02, ...");
+                txtMaK.Focus();
                 return;
             }
             string sql =
@@ -159,13 +174,21 @@ namespace baitaplon
         }
 
         // ===== XÓA =====
+        //Xóa theo Mã kho (MaK) ⇒ xóa tất cả sách trong kho đó (xóa hàng loạt)
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string ms = cboMaS.Text;
-            DialogResult xoa = MessageBox.Show("Bạn có muốn xóa không?", "Delete",
-                                               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (xoa == DialogResult.No)
+            if (string.IsNullOrEmpty(ms))
+            {
+                MessageBox.Show("Vui lòng chọn mã sách cần xóa");
                 return;
+            }
+        
+            DialogResult xoa = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận",
+                 MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question
+             );
+            if (xoa == DialogResult.No) return;
 
             string sql = "DELETE FROM Khosach WHERE MaS = '" + ms + "' ";
             Thuvien.ins_upd_del(sql);
@@ -320,10 +343,165 @@ namespace baitaplon
             txtMaK.Enabled = false;
         }
         //NHẬP FILE
+        private bool checkTrungKhoSach(string maK, string maS)
+        {
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            string sql = "SELECT COUNT(*) FROM Khosach WHERE MaK = N'" + maK + "' AND MaS = N'" + maS + "'";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            int kq = (int)cmd.ExecuteScalar();
+            return kq > 0;
+        }
+        private bool checkMaSachTonTai(string maS)
+        {
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            string sql = "SELECT COUNT(*) FROM Sach WHERE MaS = N'" + maS + "'";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            int kq = (int)cmd.ExecuteScalar();
+            return kq > 0;
+        }
+
+        private void ReadExcel_KhoSach(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                MessageBox.Show("Chưa chọn file");
+                return;
+            }
+
+            xls.Application excel = new xls.Application();
+            xls.Workbook wb = null;
+
+            int them = 0;
+            int capnhat = 0;
+            int boqua = 0;
+
+            try
+            {
+                wb = excel.Workbooks.Open(filePath);
+
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                foreach (xls.Worksheet ws in wb.Worksheets)
+                {
+                    int i = 2; // dữ liệu bắt đầu từ dòng 2
+
+                    while (true)
+                    {
+                        // B: MaK, C: MaS, D: SLN, E: SLX
+                        var vMaK = ws.Cells[i, 2].Value2;
+                        var vMaS = ws.Cells[i, 3].Value2;
+
+                        // hết dữ liệu khi cả MaK và MaS đều trống
+                        if (vMaK == null && vMaS == null) break;
+
+                        string maK = vMaK?.ToString().Trim();
+                        string maS = vMaS?.ToString().Trim();
+
+                        // bỏ qua dòng thiếu mã
+                        if (string.IsNullOrWhiteSpace(maK) || string.IsNullOrWhiteSpace(maS))
+                        {
+                            boqua++;
+                            i++;
+                            continue;
+                        }
+
+                        // check FK mã sách
+                        if (!checkMaSachTonTai(maS))
+                        {
+                            boqua++;
+                            i++;
+                            continue;
+                        }
+
+                        // đọc số lượng (null => 0)
+                        int sln = 0, slx = 0;
+
+                        var vSLN = ws.Cells[i, 4].Value2;
+                        var vSLX = ws.Cells[i, 5].Value2;
+
+                        if (vSLN != null && !int.TryParse(vSLN.ToString(), out sln))
+                        {
+                            boqua++;
+                            i++;
+                            continue;
+                        }
+                        if (vSLX != null && !int.TryParse(vSLX.ToString(), out slx))
+                        {
+                            boqua++;
+                            i++;
+                            continue;
+                        }
+
+                        // validate nghiệp vụ
+                        if (sln < 0 || slx < 0 || slx > sln)
+                        {
+                            boqua++;
+                            i++;
+                            continue;
+                        }
+
+                        //  check trùng cặp (MaK, MaS)
+                        if (checkTrungKhoSach(maK, maS))
+                        {
+                            // trùng -> UPDATE
+                            string sqlUpd =
+                                "UPDATE Khosach SET " +
+                                "SoluongN = " + sln + ", " +
+                                "SoluongX = " + slx + " " +
+                                "WHERE MaK = N'" + maK + "' AND MaS = N'" + maS + "'";
+
+                            Thuvien.ins_upd_del(sqlUpd);
+                            capnhat++;
+                        }
+                        else
+                        {
+                            // chưa có -> INSERT (không insert SoluongT vì computed)
+                            string sqlIns =
+                                "INSERT INTO Khosach(MaK, MaS, SoluongN, SoluongX) VALUES(" +
+                                "N'" + maK + "', " +
+                                "N'" + maS + "', " +
+                                sln + ", " +
+                                slx + ")";
+
+                            Thuvien.ins_upd_del(sqlIns);
+                            them++;
+                        }
+
+                        i++;
+                    }
+                }
+
+                MessageBox.Show($"Nhập Excel xong!\nThêm: {them}\nCập nhật: {capnhat}\nBỏ qua: {boqua}");
+
+                
+                load_Khosach();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi nhập Excel: " + ex.Message);
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                if (wb != null) wb.Close(false);
+                excel.Quit();
+            }
+        }
 
         private void btnNhapfile_Click(object sender, EventArgs e)
         {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Excel Files|*.xls;*.xlsx";
 
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                ReadExcel_KhoSach(ofd.FileName);
+            }
         }
     }
 }

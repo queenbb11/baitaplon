@@ -73,9 +73,60 @@ namespace baitaplon.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap long_icon_011_002 {
+            get {
+                object obj = ResourceManager.GetObject("long-icon-011_002", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap long_icon_011_0021 {
+            get {
+                object obj = ResourceManager.GetObject("long-icon-011_0021", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_book_icon_art_png_image_14438571 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-book-icon-art-png-image_14438571", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngtree_circle_password_icon_vectors_png_image_1738057 {
             get {
                 object obj = ResourceManager.GetObject("pngtree-circle-password-icon-vectors-png-image_1738057", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_colorful_stack_of_books_vector_for_library_and_reading_design_png_image_14420107 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-colorful-stack-of-books-vector-for-library-and-reading-design-png-image_1" +
+                        "4420107", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_open_book_icon_simple_illustration_of_open_book_vector_icon_image_283605 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-open-book-icon-simple-illustration-of-open-book-vector-icon-image_283605", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -51,9 +51,11 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnNhapfile = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhosach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -73,9 +75,9 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(76, 121);
+            this.groupBox1.Location = new System.Drawing.Point(81, 121);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(711, 123);
+            this.groupBox1.Size = new System.Drawing.Size(755, 123);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin tìm kiếm";
@@ -204,86 +206,105 @@
             this.dgvKhosach.Name = "dgvKhosach";
             this.dgvKhosach.RowHeadersWidth = 62;
             this.dgvKhosach.RowTemplate.Height = 28;
-            this.dgvKhosach.Size = new System.Drawing.Size(865, 197);
+            this.dgvKhosach.Size = new System.Drawing.Size(932, 197);
             this.dgvKhosach.TabIndex = 3;
             this.dgvKhosach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhosach_CellClick);
             // 
             // btnXuatfile
             // 
-            this.btnXuatfile.Location = new System.Drawing.Point(879, 145);
+            this.btnXuatfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnXuatfile.Location = new System.Drawing.Point(911, 139);
             this.btnXuatfile.Name = "btnXuatfile";
             this.btnXuatfile.Size = new System.Drawing.Size(97, 30);
             this.btnXuatfile.TabIndex = 16;
             this.btnXuatfile.Text = "Xuất file";
-            this.btnXuatfile.UseVisualStyleBackColor = true;
+            this.btnXuatfile.UseVisualStyleBackColor = false;
             this.btnXuatfile.Click += new System.EventHandler(this.btnXuatfile_Click);
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(879, 357);
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnXoa.Location = new System.Drawing.Point(911, 351);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(97, 30);
             this.btnXoa.TabIndex = 15;
             this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnTimkiem
             // 
-            this.btnTimkiem.Location = new System.Drawing.Point(879, 102);
+            this.btnTimkiem.BackColor = System.Drawing.Color.Fuchsia;
+            this.btnTimkiem.Location = new System.Drawing.Point(911, 96);
             this.btnTimkiem.Name = "btnTimkiem";
             this.btnTimkiem.Size = new System.Drawing.Size(97, 30);
             this.btnTimkiem.TabIndex = 14;
             this.btnTimkiem.Text = "Tìm kiếm";
-            this.btnTimkiem.UseVisualStyleBackColor = true;
+            this.btnTimkiem.UseVisualStyleBackColor = false;
             this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(879, 403);
+            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnReset.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(911, 397);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(97, 30);
             this.btnReset.TabIndex = 13;
             this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(879, 309);
+            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnSua.Location = new System.Drawing.Point(911, 303);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(97, 30);
             this.btnSua.TabIndex = 12;
             this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(879, 263);
+            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnLuu.Location = new System.Drawing.Point(911, 257);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(97, 30);
             this.btnLuu.TabIndex = 11;
             this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.UseVisualStyleBackColor = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnNhapfile
             // 
-            this.btnNhapfile.Location = new System.Drawing.Point(879, 196);
+            this.btnNhapfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnNhapfile.Location = new System.Drawing.Point(911, 190);
             this.btnNhapfile.Name = "btnNhapfile";
             this.btnNhapfile.Size = new System.Drawing.Size(97, 30);
             this.btnNhapfile.TabIndex = 17;
             this.btnNhapfile.Text = "Nhập file";
-            this.btnNhapfile.UseVisualStyleBackColor = true;
+            this.btnNhapfile.UseVisualStyleBackColor = false;
             this.btnNhapfile.Click += new System.EventHandler(this.btnNhapfile_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::baitaplon.Properties.Resources.long_icon_011_0021;
+            this.pictureBox1.Location = new System.Drawing.Point(365, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(40, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
             // Ql_khosach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1026, 696);
+            this.ClientSize = new System.Drawing.Size(1048, 744);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnNhapfile);
             this.Controls.Add(this.btnXuatfile);
             this.Controls.Add(this.btnXoa);
@@ -295,7 +316,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Ql_khosach";
             this.Text = "Ql_khosach";
             this.Load += new System.EventHandler(this.Ql_khosach_Load);
@@ -304,6 +325,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhosach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,5 +356,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboMaS;
         private System.Windows.Forms.Button btnNhapfile;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

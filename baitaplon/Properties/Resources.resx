@@ -118,13 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pngtree-circle-password-icon-vectors-png-image_1738057" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pngtree-circle-password-icon-vectors-png-image_1738057.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pngtree-colorful-stack-of-books-vector-for-library-and-reading-design-png-image_14420107" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngtree-colorful-stack-of-books-vector-for-library-and-reading-design-png-image_14420107.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pngtree-book-icon-art-png-image_14438571" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngtree-book-icon-art-png-image_14438571.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pngtree-open-book-icon-simple-illustration-of-open-book-vector-icon-image_283605" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngtree-open-book-icon-simple-illustration-of-open-book-vector-icon-image_283605.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ảnh chụp màn hình 2026-01-10 221900" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ảnh chụp màn hình 2026-01-10 221900.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pngtree-user-icon-png-image_5097430" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pngtree-user-icon-png-image_5097430.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Ảnh chụp màn hình 2026-01-10 221900" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ảnh chụp màn hình 2026-01-10 221900.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="long-icon-011_002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\long-icon-011_002.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pngtree-circle-password-icon-vectors-png-image_1738057" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngtree-circle-password-icon-vectors-png-image_1738057.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="long-icon-011_0021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\long-icon-011_0021.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -6,10 +6,12 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ex_cel = Microsoft.Office.Interop.Excel;
-
+using xls = Microsoft.Office.Interop.Excel;
+using System.Text.RegularExpressions;
 namespace baitaplon
 {
     public partial class Ql_Sach : Form
@@ -53,7 +55,7 @@ namespace baitaplon
             load_Nhaxuatban();
             load_Sach();
         }
-
+        //----THÊM----
         //ktr để khi thêm trùng mã thì thông báo lỗi
         private bool checktrungMas(string ms)
         {
@@ -68,7 +70,12 @@ namespace baitaplon
             else return false;
 
         }
+        //FORMAT MAK " MK__"
+        private bool CheckFormatMaS(string ms)
+        {
 
+            return Regex.IsMatch(ms, @"^S\d{2}$");
+        }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -131,6 +138,13 @@ namespace baitaplon
             {
                 MessageBox.Show("Bạn chưa chọn tình trạng!");
                 cboTinhtrang.Focus();
+                return;
+            }
+            // kiểm tra format
+            if (!CheckFormatMaS(ms))
+            {
+                MessageBox.Show("Mã thể loại phải có dạng S01, S02, ...");
+                txtMaS.Focus();
                 return;
             }
 
@@ -378,6 +392,168 @@ namespace baitaplon
             txtMaS.Enabled = true;
             txtMaS.Focus();
             load_Sach();
+        }
+
+
+        private bool checkMaTLTonTai(string maTL)
+        {
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT COUNT(*) FROM Theloai WHERE MaTL = N'" + maTL + "'";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            return (int)cmd.ExecuteScalar() > 0;
+        }
+
+        private bool checkMaTGTonTai(string maTG)
+        {
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT COUNT(*) FROM Tacgia WHERE MaTG = N'" + maTG + "'";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            return (int)cmd.ExecuteScalar() > 0;
+        }
+
+        private bool checkMaNXBTonTai(string maNXB)
+        {
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT COUNT(*) FROM Nhaxuatban WHERE MaNXB = N'" + maNXB + "'";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            return (int)cmd.ExecuteScalar() > 0;
+        }
+        private void ReadExcel_Sach(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                MessageBox.Show("Chưa chọn file");
+                return;
+            }
+
+            xls.Application excel = new xls.Application();
+            xls.Workbook wb = null;
+
+            int them = 0, capnhat = 0, boqua = 0;
+
+            try
+            {
+                wb = excel.Workbooks.Open(filePath);
+
+                if (con.State == ConnectionState.Closed) con.Open();
+
+                foreach (xls.Worksheet ws in wb.Worksheets)
+                {
+                    int i = 2; // dữ liệu bắt đầu từ dòng 2
+
+                    while (true)
+                    {
+                        // B: MaS, C: TenS ...
+                        var vMaS = ws.Cells[i, 2].Value2;
+                        var vTenS = ws.Cells[i, 3].Value2;
+
+                        // hết dữ liệu khi MaS trống
+                        if (vMaS == null) break;
+
+                        string maS = vMaS?.ToString().Trim();
+                        string tenS = vTenS?.ToString().Trim();
+
+                        string maTL = ws.Cells[i, 4].Value2?.ToString().Trim();
+                        string maNXB = ws.Cells[i, 5].Value2?.ToString().Trim();
+                        string maTG = ws.Cells[i, 6].Value2?.ToString().Trim();
+                        string namStr = ws.Cells[i, 7].Value2?.ToString().Trim();
+                        string tinhtrang = ws.Cells[i, 8].Value2?.ToString().Trim();
+                        string mota = ws.Cells[i, 9].Value2?.ToString().Trim();
+
+                        // check rỗng tối thiểu
+                        if (string.IsNullOrWhiteSpace(maS) || string.IsNullOrWhiteSpace(tenS))
+                        {
+                            boqua++; i++; continue;
+                        }
+
+                        // check format mã sách
+                        if (!CheckFormatMaS(maS))
+                        {
+                            boqua++; i++; continue;
+                        }
+
+                        // check năm
+                        if (!int.TryParse(namStr, out int nam))
+                        {
+                            boqua++; i++; continue;
+                        }
+
+                        // check FK (nếu file có thể thiếu thì cũng bỏ qua)
+                        if (string.IsNullOrWhiteSpace(maTL) || !checkMaTLTonTai(maTL))
+                        { boqua++; i++; continue; }
+
+                        if (string.IsNullOrWhiteSpace(maTG) || !checkMaTGTonTai(maTG))
+                        { boqua++; i++; continue; }
+
+                        if (string.IsNullOrWhiteSpace(maNXB) || !checkMaNXBTonTai(maNXB))
+                        { boqua++; i++; continue; }
+
+                        if (string.IsNullOrWhiteSpace(tinhtrang))
+                        { boqua++; i++; continue; }
+
+                        // INSERT / UPDATE
+                        if (checktrungMas(maS))
+                        {
+                            string sqlUpd =
+                                "UPDATE Sach SET " +
+                                "TenS = N'" + tenS + "', " +
+                                "MaTL = N'" + maTL + "', " +
+                                "MaNXB = N'" + maNXB + "', " +
+                                "MaTG = N'" + maTG + "', " +
+                                "Namxuatban = " + nam + ", " +
+                                "Tinhtrang = N'" + tinhtrang + "', " +
+                                "Mota = N'" + (mota ?? "") + "' " +
+                                "WHERE MaS = N'" + maS + "'";
+
+                            Thuvien.ins_upd_del(sqlUpd);
+                            capnhat++;
+                        }
+                        else
+                        {
+                            string sqlIns =
+                                "INSERT INTO Sach(MaS, TenS, MaTL, MaNXB, MaTG, Namxuatban, Tinhtrang, Mota) VALUES(" +
+                                "N'" + maS + "', " +
+                                "N'" + tenS + "', " +
+                                "N'" + maTL + "', " +
+                                "N'" + maNXB + "', " +
+                                "N'" + maTG + "', " +
+                                nam + ", " +
+                                "N'" + tinhtrang + "', " +
+                                "N'" + (mota ?? "") + "'" +
+                                ")";
+
+                            Thuvien.ins_upd_del(sqlIns);
+                            them++;
+                        }
+
+                        i++;
+                    }
+                }
+
+                MessageBox.Show($"Nhập Excel Sách xong!\nThêm: {them}\nCập nhật: {capnhat}\nBỏ qua: {boqua}");
+                load_Sach();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi nhập Excel: " + ex.Message);
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                if (wb != null) wb.Close(false);
+                excel.Quit();
+            }
+        }
+
+        private void btnNhapfile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Excel Files|*.xls;*.xlsx";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                ReadExcel_Sach(ofd.FileName);
+            }
         }
     }
 }

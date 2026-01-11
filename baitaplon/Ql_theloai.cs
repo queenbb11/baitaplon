@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ex_cel = Microsoft.Office.Interop.Excel;
 using xls = Microsoft.Office.Interop.Excel;
-
+using System.Text.RegularExpressions;
 namespace baitaplon
 {
     public partial class Ql_theloai : Form
@@ -39,7 +39,7 @@ namespace baitaplon
         {
 
         }
-        //ktr để khi thêm trùng mã tl thì thông báo lỗi
+        //KIỂM TRA TRÙNG MÃ 
         private bool checktrungMatl(string mtl)
         {
             if (con.State == ConnectionState.Closed)
@@ -49,6 +49,12 @@ namespace baitaplon
             int kq = (int)cmd.ExecuteScalar();
             if (kq > 0) return true;
             else return false;
+        }
+        //FORMAT MATL " TL__"
+        private bool CheckFormatMaTL(string mtl)
+        {
+            // ^TL\d{3}$  => bắt đầu bằng TL + đúng 3 chữ số
+            return Regex.IsMatch(mtl, @"^TL\d{2}$");
         }
         //Lưu
         private void button1_Click(object sender, EventArgs e)
@@ -74,13 +80,20 @@ namespace baitaplon
             {
                 txtMaTL.Focus();
                 MessageBox.Show("Trùng mã thể loại");
-                return; // thoát, không thực hiện các lệnh sau
+                return; // thoát
             }
-           
+            //kiểm tra format matl
+            // kiểm tra format
+            if (!CheckFormatMaTL(mtl))
+            {
+                MessageBox.Show("Mã thể loại phải có dạng TL01, TL02, ...");
+                txtMaTL.Focus();
+                return;
+            }
+
             string sql = "Insert into Theloai values('" + mtl + "',N'" + tentl + "' )";
             Thuvien.ins_upd_del(sql);
             MessageBox.Show("Thêm mới thành công");
-            //gọi 
             load_theloai();
         }
         //Sửa
@@ -90,11 +103,9 @@ namespace baitaplon
             string tentl = txtTenTL.Text.Trim();
             string sql = "UPDATE Theloai SET TenTL = N'" + tentl + "' WHERE MaTL = '" + mtl + "'";
             Thuvien.ins_upd_del(sql);
-
             MessageBox.Show("Sửa thành công!!!");
             load_theloai();
         }
-
         //XÓA
         //KIỂM TRA MATL TỒN TẠI TRONG SÁCH?
         private bool checkTheLoaiDangSuDung(string mtl)
@@ -103,7 +114,6 @@ namespace baitaplon
             DataTable tb = Thuvien.Getdatatable(sql);
             return tb.Rows.Count > 0;
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
 
@@ -143,11 +153,11 @@ namespace baitaplon
             string sql = "SELECT * FROM Theloai " +
                          "WHERE MaTL LIKE N'%" + mtl + "%' " +
                          "and TenTL LIKE N'%" + tentl + "%'";
-          
             DataTable tb = Thuvien.Getdatatable(sql);
             // đổ dl vào lưới
             dgvTheloai.DataSource = tb;
             dgvTheloai.Refresh();
+
            
         }
         //FORM XUẤT FILE
@@ -156,12 +166,9 @@ namespace baitaplon
             ex_cel.Application oExcel = new ex_cel.Application();
             ex_cel.Workbook oBook = oExcel.Workbooks.Add(Type.Missing);
             ex_cel.Worksheet oSheet = (ex_cel.Worksheet)oBook.Worksheets.get_Item(1);
-
             oExcel.Visible = true;
             oExcel.DisplayAlerts = false;
-
             oSheet.Name = sheetname;
-
             // ====== HEADER ======
             ex_cel.Range head = oSheet.get_Range("A1", "C1");
             head.MergeCells = true;
@@ -242,6 +249,7 @@ namespace baitaplon
 
         }
 
+        
         private void Ql_theloai_Load(object sender, EventArgs e)
         {
             load_theloai();
@@ -352,5 +360,7 @@ namespace baitaplon
                 ReadExcel_TheLoai(ofd.FileName);
             }
         }
+
+       
     }
 }
