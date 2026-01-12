@@ -53,8 +53,11 @@ namespace baitaplon
         //FORMAT MATL " TL__"
         private bool CheckFormatMaTL(string mtl)
         {
-            // ^TL\d{3}$  => bắt đầu bằng TL + đúng 3 chữ số
+            //có 4 kí tự
             return Regex.IsMatch(mtl, @"^TL\d{2}$");
+
+            //if (mtl.Length >= 5) return false; return Regex.IsMatch(mtl, @"^TL\d+$");không quá 5 || •	Nếu muốn tối đa 3 số: ^TL\d{1,3}$. 
+
         }
         //Lưu
         private void button1_Click(object sender, EventArgs e)
@@ -83,7 +86,6 @@ namespace baitaplon
                 return; // thoát
             }
             //kiểm tra format matl
-            // kiểm tra format
             if (!CheckFormatMaTL(mtl))
             {
                 MessageBox.Show("Mã thể loại phải có dạng TL01, TL02, ...");
@@ -101,6 +103,20 @@ namespace baitaplon
         {
             string mtl = txtMaTL.Text.Trim();
             string tentl = txtTenTL.Text.Trim();
+            // kiểm tra chọn dòng
+            if (string.IsNullOrWhiteSpace(mtl))
+            {
+                MessageBox.Show("Vui lòng chọn thể loại cần sửa");
+                return;
+            }
+
+            // kiểm tra rỗng tên thể loại
+            if (string.IsNullOrWhiteSpace(tentl))
+            {
+                MessageBox.Show("Tên thể loại không được để trống");
+                txtTenTL.Focus();
+                return;
+            }
             string sql = "UPDATE Theloai SET TenTL = N'" + tentl + "' WHERE MaTL = '" + mtl + "'";
             Thuvien.ins_upd_del(sql);
             MessageBox.Show("Sửa thành công!!!");
@@ -157,8 +173,6 @@ namespace baitaplon
             // đổ dl vào lưới
             dgvTheloai.DataSource = tb;
             dgvTheloai.Refresh();
-
-           
         }
         //FORM XUẤT FILE
         public void ExportExcel(DataTable tb, string sheetname)
@@ -229,16 +243,19 @@ namespace baitaplon
         }
         private void btnXuatfile_Click(object sender, EventArgs e)
         {
-            string mtl = txtMaTL.Text.Trim();
-            string tentl = txtTenTL.Text.Trim();
+            string mtl = txtMaTL_tk.Text.Trim();
+            string tentl = txtTenTL_tk.Text.Trim();
 
             string sql =
-                "SELECT ROW_NUMBER() OVER (ORDER BY MaTL) AS STT, MaTL, TenTL " +
+                "SELECT MaTL, TenTL " +
                 "FROM Theloai " +
                 "WHERE MaTL LIKE N'%" + mtl + "%' " +
-                "AND TenTL LIKE N'%" + tentl + "%'";
+                "AND TenTL LIKE N'%" + tentl + "%' " +
+                "ORDER BY MaTL";
+
             DataTable tb = Thuvien.Getdatatable(sql);
             ExportExcel(tb, "DSTheloai");
+
         }
 
         private void dgvTheloai_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

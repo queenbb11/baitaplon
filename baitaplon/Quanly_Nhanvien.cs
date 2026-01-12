@@ -30,7 +30,6 @@ namespace Quanlythuvien
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-
                 dgvDanhSach.DataSource = dt;
 
                 dgvDanhSach.AllowUserToAddRows = false;
@@ -93,6 +92,23 @@ namespace Quanlythuvien
                 using (SqlConnection con = new SqlConnection(strCon))
                 {
                     con.Open();
+
+                    /* ===== CHECK TRÙNG MÃ ===== */
+                    string checkSql =
+                        "SELECT COUNT(*) FROM Thongtin_nhanvien WHERE Manhanvien = @Ma";
+
+                    SqlCommand checkCmd = new SqlCommand(checkSql, con);
+                    checkCmd.Parameters.AddWithValue("@Ma", txtMnv2.Text.Trim());
+
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Mã nhân viên đã tồn tại!");
+                        return;
+                    }
+
+                    /* ===== INSERT ===== */
                     string sql =
                         "INSERT INTO Thongtin_nhanvien VALUES " +
                         "(@Ma,@Ten,@GT,@DT,@NS,@Email,@DC)";
@@ -123,6 +139,8 @@ namespace Quanlythuvien
                 MessageBox.Show("Lỗi thêm: " + ex.Message);
             }
         }
+
+
         private void btnTk_Click(object sender, EventArgs e)
         {
 

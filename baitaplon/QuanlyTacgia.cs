@@ -29,20 +29,20 @@ namespace baitaplon
         {
             try
             {
-                //b1:kết nối DB
+                
                 if (con.State == ConnectionState.Closed)
                     con.Open();
-                //b2:tạo đối tượng commad để thực hiện câu lệnh sql
+                
                 String sql = "Select * from Tacgia";
                 SqlCommand cmd = new SqlCommand(sql, con);
-                //b3:tạo đối tượng dataAdapter để lấy kq từ cmd
+              
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;
-                //b4:tạo đối tượng dataTable để lấy dl từ da
+               
                 DataTable tb = new DataTable();
                 da.Fill(tb);
                 cmd.Dispose();
-                //b5:đổ dl từ datatable vào dataGridview
+                
                 dtvtacgia.DataSource = tb;
                 dtvtacgia.Refresh();
             }
@@ -59,10 +59,10 @@ namespace baitaplon
 
         private bool checktrungMatg(string mtg)
         {
-            //kết nối db
+            
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //tạo đối tượng command để thực thi câu lệnh sql
+            
             string sql = "select count(*) from Tacgia Where MaTG=@mtg";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@mtg", mtg);
@@ -74,7 +74,7 @@ namespace baitaplon
 
         private void btnluutg_Click(object sender, EventArgs e)
         {
-            //b1:lấy dl trên các đk đưa trên
+            
             string mtg = txtmatg.Text.Trim();
             string ht = txttentg.Text.Trim();
             DateTime ngs = dtTacgia.Value;
@@ -104,11 +104,11 @@ namespace baitaplon
                 MessageBox.Show("Trùng mã tác giả");
                 return;
             }
-            //b2:kết nối db
+            
 
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3:tạo đối tượng commad để thực thi câu lệnh sql
+            
             string sql = "Insert Tacgia values(@mtg, @ht, @ngs, @gt, @dt, @dc)";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@mtg", mtg);
@@ -131,18 +131,18 @@ namespace baitaplon
 
         private void btnsuatg_Click(object sender, EventArgs e)
         {
-            //b1:lấy dl trên các đk đưa trên
+            
             string mtg = txtmatg.Text.Trim();
             string ht = txttentg.Text.Trim();
             DateTime ngs = dtTacgia.Value;
             string gt = txtgioitinhtg.Text;
             string dt = txtdthoaitg.Text.Trim();
             string dc = txtdchitg.Text.Trim();
-            //b2:kết nối db
+            
 
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3:tạo đối tượng commad để thực thi câu lệnh sql
+           
             string sql = "Update Tacgia set TenTG=@ht,NgaysinhTG=@ngs,DiachiTG=@dc,GioitinhTG=@gt, DienthoaiTG=@dt where MaTG=@mtg";
 
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -161,15 +161,15 @@ namespace baitaplon
 
         private void btnxoatg_Click(object sender, EventArgs e)
         {
-            //b1:lấy mã tác giả đưa vào biến
+            
             string mtg = txtmatg.Text;
             DialogResult kq = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (kq == DialogResult.No)
                 return;
-            //b2:kết nối DB
+            
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3:tạo đối tượng command để thực hiện xóa theo mã tác giả
+           
             string sql = "Delete from Tacgia where MaTG=@mtg";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@mtg", mtg);
@@ -182,45 +182,57 @@ namespace baitaplon
 
         private void btntkiemtg_Click(object sender, EventArgs e)
         {
-            //b1:lấy dl từ các đk đưa vào biến
-            string mtg = txttimkiemmtg.Text.Trim();
+            string key = txttimkiemmtg.Text.Trim();
 
-            //b2:kết nối db
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3:Tạo đối tượng command để tiến hành tìm kiếm
-            string sql = "select * From Tacgia Where MaTG like @mtg";
+
+            string sql =
+                "SELECT * FROM Tacgia WHERE " +
+                "MaTG LIKE @key OR " +
+                "TenTG LIKE @key OR " +
+                "GioitinhTG LIKE @key OR " +
+                "DienthoaiTG LIKE @key OR " +
+                "DiachiTG LIKE @key";
+
             SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.Parameters.AddWithValue("@mtg", "%" + mtg + "%");
-            //b4:tạo đối tượng dataAdapter để lấy kết quả từ cmd
+            cmd.Parameters.AddWithValue("@key", "%" + key + "%");
+
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
-            //b5:tạo đối tượng dataTable để lấy dl từ da
+
             DataTable tb = new DataTable();
             da.Fill(tb);
+
             cmd.Dispose();
             con.Close();
-            //b6:đổ dl từ tb vào datagridview
+
             dtvtacgia.DataSource = tb;
             dtvtacgia.Refresh();
         }
 
         private void btnxtg_Click(object sender, EventArgs e)
         {
-            //b1:lấy dl từ các đk đưa vào biến
-            string mtg = txttimkiemmtg.Text.Trim();
+            
+            string key = txttimkiemmtg.Text.Trim();
 
-            //b2:kết nối db
+            
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3:Tạo đối tượng command để tiến hành tìm kiếm
-            string sql = "select ROW_NUMBER() OVER(ORDER BY MaTG) STT,* From Tacgia Where MaTG like @mtg ";
+            
+            string sql = @"SELECT ROW_NUMBER() OVER(ORDER BY MaTG) STT, * 
+                        FROM Tacgia
+                        WHERE MaTG LIKE @key
+                           OR TenTG LIKE @key
+                           OR GioitinhTG LIKE @key
+                           OR DienthoaiTG LIKE @key
+                           OR DiachiTG LIKE @key";
             SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.Parameters.AddWithValue("@mtg", "%" + mtg + "%");
-            //b4:tạo đối tượng dataAdapter để lấy kết quả từ cmd
+            cmd.Parameters.AddWithValue("@key", "%" + key + "%");
+
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
-            //b5:tạo đối tượng dataTable để lấy dl từ da
+            
             DataTable tb = new DataTable();
             da.Fill(tb);
             cmd.Dispose();
@@ -278,8 +290,7 @@ namespace baitaplon
             ex_cel.Range cl6 = oSheet.get_Range("F3", "F3");
             cl6.Value2 = "ĐIỆN THOẠI";
             cl6.ColumnWidth = 20.0;
-            //ex_cel.Range cl6_1 = oSheet.get_Range("F4", "F1000");
-            //cl6_1.Columns.NumberFormat = "dd/mm/yyyy";
+            
 
 
             ex_cel.Range cl8 = oSheet.get_Range("G3", "G3");
@@ -293,8 +304,7 @@ namespace baitaplon
             // Thiết lập màu nền
             rowHead.Interior.ColorIndex = 15;
             rowHead.HorizontalAlignment = ex_cel.XlHAlign.xlHAlignCenter;
-            // Tạo mảng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
-            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+
             object[,] arr = new object[tb.Rows.Count, tb.Columns.Count];
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int r = 0; r < tb.Rows.Count; r++)

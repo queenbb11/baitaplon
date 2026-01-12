@@ -29,20 +29,20 @@ namespace baitaplon
         {
             try
             {
-                //b1:kết nối DB
+                
                 if (con.State == ConnectionState.Closed)
                     con.Open();
-                //b2:tạo đối tượng commad để thực hiện câu lệnh sql
+                
                 String sql = "Select * from Nhaxuatban";
                 SqlCommand cmd = new SqlCommand(sql, con);
-                //b3:tạo đối tượng dataAdapter để lấy kq từ cmd
+                
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;
-                //b4:tạo đối tượng dataTable để lấy dl từ da
+               
                 DataTable tb = new DataTable();
                 da.Fill(tb);
                 cmd.Dispose();
-                //b5:đổ dl từ datatable vào dataGridview
+                
                 dtvnxb.DataSource = tb;
                 dtvnxb.Refresh();
             }
@@ -57,13 +57,13 @@ namespace baitaplon
             }
         }
 
-        // BƯỚC NÀY LÀM LÚC NÀO CŨNG ĐƯỢC, NÓ CHECK KHÔNG ĐƯỢC TRÙNG MÃ NÀO ĐÓ
+        // check trung
         private bool checktrungManxb(string mnxb)
         {
-            //kết nối db
+            
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //tạo đối tượng command để thực thi câu lệnh sql
+            
             string sql = "select count(*) from Nhaxuatban Where MaNXB=@mnxb";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@mnxb", mnxb);
@@ -81,7 +81,7 @@ namespace baitaplon
         // BƯỚC 4: TẠO SỰ KIỆN CHO NÚT LƯU
         private void btnluutg_Click(object sender, EventArgs e)
         {
-            //b1:lấy dl trên các đk đưa trên
+            
             string mnxb = txtmanxb.Text.Trim();
             string ht = txttennxb.Text.Trim();
             string dt = txtdthoainxb.Text.Trim();
@@ -110,11 +110,11 @@ namespace baitaplon
                 MessageBox.Show("Trùng mã nhà xuất bản");
                 return;
             }
-            //b2:kết nối db
+            
 
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3:tạo đối tượng commad để thực thi câu lệnh sql
+            
             string sql = "Insert Nhaxuatban values(@mtg, @ht, @email, @dt, @dc)";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@mtg", mnxb);
@@ -132,17 +132,17 @@ namespace baitaplon
         // BƯỚC 5: TẠO SỰ KIỆN CHO NÚT SỬA
         private void btnsuatg_Click_1(object sender, EventArgs e)
         {
-            //b1:lấy dl trên các đk đưa trên
+            
             string mnxb = txtmanxb.Text.Trim();
             string ht = txttennxb.Text.Trim();
             string dt = txtdthoainxb.Text.Trim();
             string email = txtemailnxb.Text.Trim();
             string dc = txtdchinxb.Text.Trim();
-            //b2:kết nối db
+            
 
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3:tạo đối tượng commad để thực thi câu lệnh sql
+            
             string sql = "Update Nhaxuatban set TenNXB=@ht,DiachiNXB=@dc,EmailNXB =@email, DienthoaiNXB=@dt where MaNXB=@mnxb";
 
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -162,15 +162,15 @@ namespace baitaplon
         // BƯỚC 6: TẠO SỰ KIỆN CHO NÚT XÓA
         private void btnxoatg_Click(object sender, EventArgs e)
         {
-            //b1:lấy mã tác giả đưa vào biến
+            
             string mnxb = txtmanxb.Text;
             DialogResult kq = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (kq == DialogResult.No)
                 return;
-            //b2:kết nối DB
+            
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3:tạo đối tượng command để thực hiện xóa theo mã tác giả
+           
             string sql = "Delete from Nhaxuatban where MaNXB=@mnxb";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@mnxb", mnxb);
@@ -185,25 +185,32 @@ namespace baitaplon
         //BƯỚC 7: TẠO SỰ KIỆN CHO NÚT TÌM KIẾM
         private void btntkiemtg_Click(object sender, EventArgs e)
         {
-            //b1:lấy dl từ các đk đưa vào biến
-            string mnxb= txttimkiemnxb.Text.Trim();
 
-            //b2:kết nối db
+            string key = txttimkiemnxb.Text.Trim();
+
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3:Tạo đối tượng command để tiến hành tìm kiếm
-            string sql = "select * From Nhaxuatban Where MaNXB like @mnxb";
+
+            string sql =
+                "SELECT * FROM Nhaxuatban WHERE " +
+                "MaNXB LIKE @key OR " +
+                "TenNXB LIKE @key OR " +
+                "DienthoaiNXB LIKE @key OR " +
+                "EmailNXB LIKE @key OR " +
+                "DiachiNXB LIKE @key";
+
             SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.Parameters.AddWithValue("@mnxb", "%" + mnxb + "%");
-            //b4:tạo đối tượng dataAdapter để lấy kết quả từ cmd
+            cmd.Parameters.AddWithValue("@key", "%" + key + "%");
+
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
-            //b5:tạo đối tượng dataTable để lấy dl từ da
+
             DataTable tb = new DataTable();
             da.Fill(tb);
+
             cmd.Dispose();
             con.Close();
-            //b6:đổ dl từ tb vào datagridview
+
             dtvnxb.DataSource = tb;
             dtvnxb.Refresh();
         }
@@ -213,20 +220,26 @@ namespace baitaplon
         // BƯỚC 8: TẠO SỰ KIỆN CHO NÚT XUẤT FILE EXCEL
         private void btnxtg_Click(object sender, EventArgs e)
         {
-            //b1:lấy dl từ các đk đưa vào biến
-            string mnxb= txttimkiemnxb.Text.Trim();
+            
+            string key = txttimkiemnxb.Text.Trim();
 
-            //b2:kết nối db
+            
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            //b3:Tạo đối tượng command để tiến hành tìm kiếm
-            string sql = "select ROW_NUMBER() OVER(ORDER BY MaNXB) STT,* From Nhaxuatban Where MaNXB like @mnxb ";
+            
+            string sql = @"SELECT ROW_NUMBER() OVER(ORDER BY MaNXB) STT, * 
+                            FROM Nhaxuatban 
+                            WHERE MaNXB LIKE @key
+                               OR TenNXB LIKE @key
+                               OR DienthoaiNXB LIKE @key
+                               OR EmailNXB LIKE @key
+                               OR DiachiNXB LIKE @key";
             SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.Parameters.AddWithValue("@mnxb", "%" + mnxb + "%");
-            //b4:tạo đối tượng dataAdapter để lấy kết quả từ cmd
+            cmd.Parameters.AddWithValue("@key", "%" + key + "%");
+
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
-            //b5:tạo đối tượng dataTable để lấy dl từ da
+            
             DataTable tb = new DataTable();
             da.Fill(tb);
             cmd.Dispose();
@@ -284,9 +297,7 @@ namespace baitaplon
             ex_cel.Range cl6 = oSheet.get_Range("F3", "F3");
             cl6.Value2 = "ĐỊA CHỈ";
             cl6.ColumnWidth = 20.0;
-            //ex_cel.Range cl6_1 = oSheet.get_Range("F4", "F1000");
-            //cl6_1.Columns.NumberFormat = "dd/mm/yyyy";
-
+            
 
             ex_cel.Range rowHead = oSheet.get_Range("A3", "F3");
             rowHead.Font.Bold = true;
@@ -295,8 +306,7 @@ namespace baitaplon
             // Thiết lập màu nền
             rowHead.Interior.ColorIndex = 15;
             rowHead.HorizontalAlignment = ex_cel.XlHAlign.xlHAlignCenter;
-            // Tạo mảng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
-            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+            
             object[,] arr = new object[tb.Rows.Count, tb.Columns.Count];
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int r = 0; r < tb.Rows.Count; r++)
@@ -332,9 +342,7 @@ namespace baitaplon
             ex_cel.Range c3 = (ex_cel.Range)oSheet.Cells[rowEnd, columnStart];
             ex_cel.Range c4 = oSheet.get_Range(c1, c3);
             oSheet.get_Range(c3, c4).HorizontalAlignment = ex_cel.XlHAlign.xlHAlignCenter;
-            //Định dạng ngày sinh
-            //ex_cel.Range cl_ngs = oSheet.get_Range("D" + rowStart, "D" + rowEnd);
-            //cl_ngs.Columns.NumberFormat = "dd/mm/yyyy";
+            
         }
 
         //BƯỚC 9: TẠO SỰ KIỆN CHO CELL CLICK TRONG DATAGRIDVIEW
@@ -356,20 +364,16 @@ namespace baitaplon
         // BƯỚC 10: TẠO SỰ KIỆN CHO NÚT RESET
         private void btnreset_Click(object sender, EventArgs e)
         {
-            // Xóa dữ liệu nhập
+            
             txtmanxb.Clear();
             txttennxb.Clear();
             txtdthoainxb.Clear();
             txtemailnxb.Clear();
             txtdchinxb.Clear();
 
-            // Xóa ô tìm kiếm (nếu có)
             txttimkiemnxb.Clear();
-
-            // Load lại danh sách tác giả
             load_nxb();
 
-            // Đưa con trỏ về ô Mã tác giả
             txtmanxb.Focus();
             txtmanxb.Enabled = true;
         }

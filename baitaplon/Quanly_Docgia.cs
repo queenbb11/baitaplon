@@ -68,7 +68,6 @@ namespace baitaplon
                 return false;
             try
             {
-                // Validate overall email format, then ensure domain is gmail.com
                 var addr = new System.Net.Mail.MailAddress(email.Trim());
                 return addr.Host.Equals("gmail.com", StringComparison.OrdinalIgnoreCase);
             }
@@ -90,7 +89,6 @@ namespace baitaplon
 
         private void btnluutg_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ĐÃ VÀO NÚT LƯU");
             string madg = txtmadg.Text.Trim();
             string tendg = txttendg.Text.Trim();
             DateTime ngs = ngsdg.Value;
@@ -99,9 +97,17 @@ namespace baitaplon
             string email = txtemaildg.Text.Trim();
             string dc = txtdchidg.Text.Trim();
 
-            if (madg == "" || tendg == "")
+            if (string.IsNullOrWhiteSpace(madg))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ Mã và Tên độc giả");
+                MessageBox.Show("Vui lòng nhập mã độc giả!");
+                txtmadg.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tendg))
+            {
+                MessageBox.Show("Vui lòng nhập tên độc giả!");
+                txttendg.Focus();
                 return;
             }
 
@@ -111,22 +117,29 @@ namespace baitaplon
                 return;
             }
 
-
             if (checktrungMadg(madg))
             {
                 MessageBox.Show("Trùng mã độc giả");
+                txtmadg.Focus();
                 return;
             }
 
             if (con.State == ConnectionState.Closed)
                 con.Open();
 
-            string sql =
-                "INSERT Docgia VALUES('" + madg + "',N'" + tendg + "','" +
-                ngs + "',N'" + gt + "','" + dt + "','" + email + "',N'" + dc + "')";
-
+            string sql = "INSERT Docgia VALUES(@madg,@tendg,@ngs,@gt,@dt,@email,@dc)";
             SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("@madg", madg);
+            cmd.Parameters.AddWithValue("@tendg", tendg);
+            cmd.Parameters.AddWithValue("@ngs", ngs);          
+            cmd.Parameters.AddWithValue("@gt", gt);
+            cmd.Parameters.AddWithValue("@dt", dt);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@dc", dc);
+
             cmd.ExecuteNonQuery();
+            cmd.Dispose();
             con.Close();
 
             MessageBox.Show("Thêm mới thành công!");
@@ -143,12 +156,12 @@ namespace baitaplon
             string email = txtemaildg.Text.Trim();
             string dc = txtdchidg.Text.Trim();
 
-            //if (!isValidGmail(email))
-            //{
-            //    MessageBox.Show("Email phải đúng định dạng @gmail.com");
-            //    txtemaildg.Focus();
-            //    return;
-            //}
+
+            if (!isValidGmail(email))
+            {
+                MessageBox.Show("Email phải đúng định dạng @gmail.com");
+                return;
+            }
 
             if (con.State == ConnectionState.Closed)
                 con.Open();
@@ -221,32 +234,33 @@ namespace baitaplon
             load_docgia();
         }
 
+        // NUT TIM KIEM 
         private void btntkiemtg_Click(object sender, EventArgs e)
         {
-            //b1:lấy dl từ các đk đưa vào biến
-            string madg = txttimkiemmtg.Text.Trim();
 
-            //b2:kết nối db
+            string key = txttimkiemmtg.Text.Trim();
+
             if (con.State == ConnectionState.Closed)
                 con.Open();
 
-            //b3:Tạo đối tượng command để tiến hành tìm kiếm
-            string sql = "select * From Docgia Where MaDG like @madg";
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.Parameters.AddWithValue("@madg", "%" + madg + "%");
+            string sql =
+                "SELECT * FROM Docgia WHERE " +
+                "MaDG LIKE @key OR " +
+                "TenDG LIKE @key OR " +
+                "GioitinhDG LIKE @key";
 
-            //b4:tạo đối tượng dataAdapter để lấy kết quả từ cmd
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@key", "%" + key + "%");
+
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
 
-            //b5:tạo đối tượng dataTable để lấy dl từ da
             DataTable tb = new DataTable();
             da.Fill(tb);
 
             cmd.Dispose();
             con.Close();
 
-            //b6:đổ dl từ tb vào datagridview
             dtvdocgia.DataSource = tb;
             dtvdocgia.Refresh();
 
@@ -254,28 +268,29 @@ namespace baitaplon
 
         private void btnxtg_Click(object sender, EventArgs e)
         {
-            string madg = txttimkiemmtg.Text.Trim();
-            string tendg = txttimkiemmtg.Text.Trim();
-            string gt = txttimkiemmtg.Text.Trim();
-            string dt = txttimkiemmtg.Text.Trim();
+            string key = txttimkiemmtg.Text.Trim();
 
             if (con.State == ConnectionState.Closed)
                 con.Open();
 
-            string sql =
-                "SELECT * FROM Docgia WHERE " +
-                "MaDG LIKE '%" + madg + "%' AND " +
-                "TenDG LIKE N'%" + tendg + "%' AND " +
-                "GioitinhDG LIKE N'%" + gt + "%' AND " +
-                "DienthoaiDG LIKE '%" + dt + "%'";
+            string sql = @"SELECT * FROM Docgia WHERE 
+                        MaDG LIKE @key OR 
+                        TenDG LIKE @key OR 
+                        GioitinhDG LIKE @key OR
+                        DienthoaiDG LIKE @key OR
+                        EmailDG LIKE @key OR
+                        DiachiDG LIKE @key";
 
             SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            cmd.Parameters.AddWithValue("@key", "%" + key + "%");
+
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+
             DataTable tb = new DataTable();
             da.Fill(tb);
-
+            cmd.Dispose();
             con.Close();
-
             ExportExcel(tb, "DSDocgia");
         }
 

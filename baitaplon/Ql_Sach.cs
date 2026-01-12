@@ -227,13 +227,7 @@ namespace baitaplon
         }
 
 
-        private void dgvTheloai_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            if (dgvSach.Rows[e.RowIndex].IsNewRow)
-                return;
-            dgvSach.Rows[e.RowIndex].Cells["STT"].Value = e.RowIndex + 1;
-
-        }
+      
         private void dgvSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return; // click header thì bỏ qua
@@ -379,6 +373,14 @@ namespace baitaplon
             ExportExcel_Sach(tb, "DSSach");
         }
 
+        private void dgvSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            if (dgvSach.Rows[e.RowIndex].IsNewRow)
+                return;
+            dgvSach.Rows[e.RowIndex].Cells["STT"].Value = e.RowIndex + 1;
+
+        }
+
         private void btnReset_Click(object sender, EventArgs e)
         {
             txtMaS.Clear();
@@ -480,13 +482,19 @@ namespace baitaplon
 
                         // check FK (nếu file có thể thiếu thì cũng bỏ qua)
                         if (string.IsNullOrWhiteSpace(maTL) || !checkMaTLTonTai(maTL))
-                        { boqua++; i++; continue; }
+                        {
+                            MessageBox.Show($"Dòng {i}: Mã thể loại {maTL} không tồn tại trong CSDL!");
+                            boqua++; i++; continue; }
 
                         if (string.IsNullOrWhiteSpace(maTG) || !checkMaTGTonTai(maTG))
-                        { boqua++; i++; continue; }
+                        {
+                            MessageBox.Show($"Dòng {i}: Mã tác giả {maTG} không tồn tại trong CSDL!");
+                            boqua++; i++; continue; }
 
                         if (string.IsNullOrWhiteSpace(maNXB) || !checkMaNXBTonTai(maNXB))
-                        { boqua++; i++; continue; }
+                        {
+                            MessageBox.Show($"Dòng {i}: Mã NXB {maNXB} không tồn tại trong CSDL!");
+                            boqua++; i++; continue; }
 
                         if (string.IsNullOrWhiteSpace(tinhtrang))
                         { boqua++; i++; continue; }

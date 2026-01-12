@@ -199,6 +199,7 @@ namespace baitaplon
             load_Khosach();
         }
 
+
         private void btnReset_Click(object sender, EventArgs e)
         {
             txtMaK.Clear();
@@ -409,6 +410,7 @@ namespace baitaplon
                         // bỏ qua dòng thiếu mã
                         if (string.IsNullOrWhiteSpace(maK) || string.IsNullOrWhiteSpace(maS))
                         {
+                            MessageBox.Show($"Dòng {i}: Thiếu Mã kho hoặc Mã sách!");
                             boqua++;
                             i++;
                             continue;
@@ -417,6 +419,7 @@ namespace baitaplon
                         // check FK mã sách
                         if (!checkMaSachTonTai(maS))
                         {
+                            MessageBox.Show($"Dòng {i}: Mã sách {maS} không tồn tại trong CSDL!");
                             boqua++;
                             i++;
                             continue;

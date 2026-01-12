@@ -123,6 +123,8 @@ namespace baitaplon
             this.Show();
         }
 
+
+        //
         private void btnQLTrangThaiSach_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -133,6 +135,7 @@ namespace baitaplon
             }
             this.Show();
         }
+        
 
         private void btnQLTraCuu_Click(object sender, EventArgs e)
         {
