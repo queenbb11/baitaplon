@@ -58,6 +58,8 @@
             // 
             // btnreset
             // 
+            this.btnreset.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnreset.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnreset.Location = new System.Drawing.Point(981, 354);
             this.btnreset.Name = "btnreset";
             this.btnreset.Size = new System.Drawing.Size(75, 44);
@@ -68,6 +70,8 @@
             // 
             // btntkiemtg
             // 
+            this.btntkiemtg.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntkiemtg.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btntkiemtg.Location = new System.Drawing.Point(903, 207);
             this.btntkiemtg.Name = "btntkiemtg";
             this.btntkiemtg.Size = new System.Drawing.Size(82, 44);
@@ -90,6 +94,8 @@
             // 
             // btnxtg
             // 
+            this.btnxtg.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnxtg.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnxtg.Location = new System.Drawing.Point(788, 354);
             this.btnxtg.Name = "btnxtg";
             this.btnxtg.Size = new System.Drawing.Size(82, 44);
@@ -100,6 +106,8 @@
             // 
             // btnxoatg
             // 
+            this.btnxoatg.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnxoatg.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnxoatg.Location = new System.Drawing.Point(588, 354);
             this.btnxoatg.Name = "btnxoatg";
             this.btnxoatg.Size = new System.Drawing.Size(82, 44);
@@ -110,6 +118,8 @@
             // 
             // btnsuatg
             // 
+            this.btnsuatg.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsuatg.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnsuatg.Location = new System.Drawing.Point(378, 354);
             this.btnsuatg.Name = "btnsuatg";
             this.btnsuatg.Size = new System.Drawing.Size(82, 44);
@@ -120,6 +130,8 @@
             // 
             // btnluutg
             // 
+            this.btnluutg.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnluutg.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnluutg.Location = new System.Drawing.Point(156, 354);
             this.btnluutg.Name = "btnluutg";
             this.btnluutg.Size = new System.Drawing.Size(82, 44);
@@ -141,6 +153,7 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtmanxb);
             this.groupBox1.Controls.Add(this.txtdchinxb);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(47, 81);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(698, 251);
@@ -255,9 +268,10 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(511, 42);
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(509, 41);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(200, 19);
+            this.label9.Size = new System.Drawing.Size(253, 23);
             this.label9.TabIndex = 40;
             this.label9.Text = "QUẢN LÝ NHÀ XUẤT BẢN";
             this.label9.Click += new System.EventHandler(this.label9_Click);
@@ -282,6 +296,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1112, 684);
             this.Controls.Add(this.btnreset);
             this.Controls.Add(this.btntkiemtg);
