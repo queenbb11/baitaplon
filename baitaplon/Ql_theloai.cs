@@ -366,7 +366,6 @@ namespace baitaplon
                 excel.Quit();
             }
         }
-
         private void btnNhapfile_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -377,7 +376,5 @@ namespace baitaplon
                 ReadExcel_TheLoai(ofd.FileName);
             }
         }
-
-       
     }
 }
