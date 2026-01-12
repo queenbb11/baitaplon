@@ -1,4 +1,4 @@
-﻿namespace Quanlythuvien
+﻿namespace baitaplon
 {
     partial class Quanly_Nhanvien
     {

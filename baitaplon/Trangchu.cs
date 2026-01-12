@@ -1,4 +1,4 @@
-﻿using Quanlythuvien;
+﻿
 using System;
 using System.Windows.Forms;
 namespace baitaplon
@@ -129,7 +129,7 @@ namespace baitaplon
         {
             this.Hide();
 
-            using (QL_Trangthaisach frmS = new QL_Trangthaisach())
+            using (QLThe frmS = new QLThe())
             {
                 frmS.ShowDialog();
             }
@@ -159,5 +159,34 @@ namespace baitaplon
             this.Show();
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            using (QL_PhieuTra frmS = new QL_PhieuTra())
+            {
+                frmS.ShowDialog();
+            }
+
+            this.Show();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            using (QL_PhieuMuon frmS = new QL_PhieuMuon())
+            {
+                frmS.ShowDialog();
+            }
+
+            this.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            using (QL_PhieuPhat frmS = new QL_PhieuPhat())
+            {
+                frmS.ShowDialog();
+            }
+
+            this.Show();
+        }
     }
 }

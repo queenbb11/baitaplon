@@ -68,11 +68,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="QLThe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLThe.Designer.cs">
+      <DependentUpon>QLThe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ql_khosach.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ql_khosach.Designer.cs">
       <DependentUpon>Ql_khosach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QL_PhieuMuon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QL_PhieuMuon.Designer.cs">
+      <DependentUpon>QL_PhieuMuon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QL_PhieuPhat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QL_PhieuPhat.Designer.cs">
+      <DependentUpon>QL_PhieuPhat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QL_PhieuTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QL_PhieuTra.Designer.cs">
+      <DependentUpon>QL_PhieuTra.cs</DependentUpon>
     </Compile>
     <Compile Include="Ql_Sach.cs">
       <SubType>Form</SubType>
@@ -151,8 +175,20 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="QLThe.resx">
+      <DependentUpon>QLThe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ql_khosach.resx">
       <DependentUpon>Ql_khosach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QL_PhieuMuon.resx">
+      <DependentUpon>QL_PhieuMuon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QL_PhieuPhat.resx">
+      <DependentUpon>QL_PhieuPhat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QL_PhieuTra.resx">
+      <DependentUpon>QL_PhieuTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ql_Sach.resx">
       <DependentUpon>Ql_Sach.cs</DependentUpon>

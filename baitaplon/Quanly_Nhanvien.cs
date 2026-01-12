@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
-namespace Quanlythuvien
+namespace baitaplon
 {
     public partial class Quanly_Nhanvien : Form
     {
@@ -311,7 +311,10 @@ namespace Quanlythuvien
             oSheet.Name = "NhanVien";
 
             /* ===== TIÊU ĐỀ ===== */
-            Excel.Range head = oSheet.Range["A1", "G1"];
+            Excel.Range head = oSheet.Range[
+                oSheet.Cells[1, 1],
+                oSheet.Cells[1, 7]
+            ];
             head.Merge();
             head.Value = "DANH SÁCH NHÂN VIÊN";
             head.Font.Bold = true;
@@ -336,34 +339,44 @@ namespace Quanlythuvien
                 oSheet.Columns[i + 1].ColumnWidth = 25;
             }
 
-            Excel.Range headerRow = oSheet.Range["A3", "G3"];
+            Excel.Range headerRow = oSheet.Range[
+                oSheet.Cells[3, 1],
+                oSheet.Cells[3, headers.Length]
+            ];
             headerRow.Font.Bold = true;
-            headerRow.Borders.LineStyle = Excel.Constants.xlSolid;
+            headerRow.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
             headerRow.Interior.ColorIndex = 15;
             headerRow.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-            /* ===== DATA (ĐỔ TỪNG Ô → KHÔNG MẤT GIỚI TÍNH) ===== */
+            /* ===== DATA ===== */
             int row = 4;
             foreach (DataRow r in tb.Rows)
             {
                 oSheet.Cells[row, 1] = r["Manhanvien"];
                 oSheet.Cells[row, 2] = r["Tennhanvien"];
                 oSheet.Cells[row, 3] = Convert.ToDateTime(r["Ngaysinh"]).ToString("dd/MM/yyyy");
-                oSheet.Cells[row, 4] = r["Gioitinh"];   
+                oSheet.Cells[row, 4] = r["Gioitinh"];
                 oSheet.Cells[row, 5] = r["Dienthoai"];
                 oSheet.Cells[row, 6] = r["Email"];
                 oSheet.Cells[row, 7] = r["Diachi"];
                 row++;
             }
 
-            Excel.Range dataRange = oSheet.Range["A4", "G" + (row - 1)];
-            dataRange.Borders.LineStyle = Excel.Constants.xlSolid;
+            Excel.Range dataRange = oSheet.Range[
+                oSheet.Cells[4, 1],
+                oSheet.Cells[row - 1, headers.Length]
+            ];
+            dataRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
 
-            oSheet.Range["C4", "D" + (row - 1)]
-                  .HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            oSheet.Range[
+                oSheet.Cells[4, 3],
+                oSheet.Cells[row - 1, 4]
+            ].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
             MessageBox.Show("Xuất Excel thành công!");
         }
+
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
