@@ -189,10 +189,10 @@ namespace baitaplon
             string mpm = textBoxMaPhieuMuon.Text.Trim();
             string mdg = comboBoxMaDocGia.SelectedValue.ToString();
             string manv = comboBoxNhanVienLapPhieu.SelectedValue.ToString();
-            DateTime nm = dateTimePickerNgayMuon.Value;
-            DateTime ht = dateTimePickerHanTra.Value;
+            DateTime nm = dateTimePickerNgayMuon.Value.Date;
+            DateTime ht = dateTimePickerHanTra.Value.Date;
 
-            if (ht <= nm)
+            if (ht < nm)
             {
                 MessageBox.Show("Hạn trả phải lớn hơn hoặc bằng Ngày mượn");
                 return;
@@ -338,10 +338,10 @@ namespace baitaplon
             string mpm = textBoxMaPhieuMuon.Text.Trim();
             string mdg = comboBoxMaDocGia.SelectedValue.ToString();
             string manv = comboBoxNhanVienLapPhieu.SelectedValue.ToString();
-            DateTime nm = dateTimePickerNgayMuon.Value;
-            DateTime ht = dateTimePickerHanTra.Value;
+            DateTime nm = dateTimePickerNgayMuon.Value.Date;
+            DateTime ht = dateTimePickerHanTra.Value.Date;
 
-            if (ht <= nm)
+            if (ht < nm)
             {
                 MessageBox.Show("Hạn trả phải lớn hơn hoặc bằng Ngày mượn");
                 return;

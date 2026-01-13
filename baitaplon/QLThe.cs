@@ -88,6 +88,20 @@ namespace baitaplon
             string mathe = txtMaThe.Text.Trim();
             string madg = cbbMaDG.SelectedValue?.ToString();
             string trangthai = cbbTrangThai.Text;
+            DateTime ngayCap = dtpNgayCap.Value.Date;
+            DateTime ngayHetHan = dtpNgayHetHan.Value.Date;
+
+            if (ngayHetHan < ngayCap)
+            {
+                MessageBox.Show("Ngày hết hạn phải lớn hơn hoặc bằng ngày cấp!");
+                return;
+            }
+
+            if (ngayCap > DateTime.Now.Date)
+            {
+                MessageBox.Show("Ngày cấp không được lớn hơn ngày hiện tại!");
+                return;
+            }
 
             if (string.IsNullOrWhiteSpace(mathe) || madg == null)
             {
@@ -118,6 +132,20 @@ namespace baitaplon
         private void btnSua_Click(object sender, EventArgs e)
         {
             string mathe = txtMaThe.Text.Trim();
+            DateTime ngayCap = dtpNgayCap.Value.Date;
+            DateTime ngayHetHan = dtpNgayHetHan.Value.Date;
+
+            if (ngayHetHan < ngayCap)
+            {
+                MessageBox.Show("Ngày hết hạn phải lớn hơn hoặc bằng ngày cấp!");
+                return;
+            }
+
+            if (ngayCap > DateTime.Now.Date)
+            {
+                MessageBox.Show("Ngày cấp không được lớn hơn ngày hiện tại!");
+                return;
+            }
 
             if (!kiemTraTrungMaThe(mathe))
             {

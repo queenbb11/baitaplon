@@ -193,11 +193,8 @@ namespace baitaplon
 
             string sql =
                 "SELECT * FROM Nhaxuatban WHERE " +
-                "MaNXB LIKE @key OR " +
-                "TenNXB LIKE @key OR " +
-                "DienthoaiNXB LIKE @key OR " +
-                "EmailNXB LIKE @key OR " +
-                "DiachiNXB LIKE @key";
+                
+                "DienthoaiNXB LIKE @key  ";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@key", "%" + key + "%");

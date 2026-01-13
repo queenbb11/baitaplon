@@ -70,6 +70,19 @@ namespace baitaplon
             else return false;
 
         }
+        private bool checktrungTenS(string ts)
+        {
+
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            string sql = "Select count (*) from Sach Where TenS= '" + ts + "' ";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            int kq = (int)cmd.ExecuteScalar();
+            if (kq > 0) return true;
+            else return false;
+
+        }
         //FORMAT MAK " MK__"
         private bool CheckFormatMaS(string ms)
         {
@@ -102,6 +115,12 @@ namespace baitaplon
             {
                 txtMaS.Focus();
                 MessageBox.Show("Trùng mã sách!");
+                return;
+            }
+            if (checktrungTenS(ts))
+            {
+                txtMaS.Focus();
+                MessageBox.Show("Trùng tên sách!");
                 return;
             }
 
